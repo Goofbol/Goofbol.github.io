@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>About: Nihaan Mohammed</title>
+<meta name="description" content="How Nihaan Mohammed builds, how he thinks, what would change his mind, the shelf, and the mark." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect x='2' y='2' width='92' height='92' rx='18' fill='%238B1A1A'/%3E%3Cpolyline points='26,68 26,28 46,68 46,28 58,50 70,28 70,68' fill='none' stroke='%23FDFCFA' stroke-width='6.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='58' cy='50' r='2.6' fill='%23D4842A'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site.css" />
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="plane">
+      <line x1="48" y1="13" x2="48" y2="64" stroke-width="5.5" stroke-linecap="round" />
+      <polyline points="20,46 48,32 76,46" fill="none" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+      <polyline points="37,68 48,62 59,68" fill="none" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <g id="hits">
+      <circle cx="27" cy="42.5" r="2.4" /><circle cx="35" cy="38.5" r="2.4" />
+      <circle cx="61" cy="38.5" r="2.4" /><circle cx="69" cy="42.5" r="2.4" />
+      <circle cx="43" cy="64.7" r="2.4" /><circle cx="53" cy="64.7" r="2.4" />
+      <circle cx="48" cy="52" r="2.4" />
+    </g>
+    <g id="ring">
+      <circle cx="48" cy="20" r="8" fill="none" stroke-width="1.6" stroke-dasharray="3 3.2" opacity="0.85" />
+    </g>
+    <g id="reg" fill="none" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="33,86 33,74 43,86 43,74" />
+      <polyline points="49,86 49,74 56,81 63,74 63,86" />
+    </g>
+    <g id="tile">
+      <rect x="2" y="2" width="92" height="92" rx="18" fill="#8B1A1A" />
+      <use href="#plane" stroke="#FDFCFA" />
+      <use href="#hits" fill="#D4842A" />
+      <use href="#ring" stroke="#FDFCFA" />
+      <use href="#reg" stroke="#FDFCFA" />
+    </g>
+  </defs>
+</svg>
+
+<header class="topbar" role="banner">
+  <a href="index.html" class="wordmark">
+    <svg viewBox="0 0 96 96" aria-hidden="true"><use href="#plane" stroke="currentColor" /><use href="#hits" fill="#D4842A" /><use href="#ring" stroke="currentColor" /><use href="#reg" stroke="currentColor" /></svg>
+    Nihaan Mohammed<span class="dot">.</span>
+  </a>
+  <nav class="topbar-nav" aria-label="Page navigation">
+    <a href="index.html" class="nav-link"><span class="nav-key">H</span><span class="nav-label">Home</span></a>
+    <a href="route.html" class="nav-link"><span class="nav-key">R</span><span class="nav-label">Route</span></a>
+    <a href="work.html" class="nav-link"><span class="nav-key">W</span><span class="nav-label">Work</span></a>
+    <a href="about.html" class="nav-link"><span class="nav-key">A</span><span class="nav-label">About</span></a>
+    <a href="resume.html" class="nav-link"><span class="nav-key">E</span><span class="nav-label">Resume</span></a>
+  </nav>
+  <button id="bp-toggle" role="switch" aria-checked="false" aria-label="Blueprint mode: reveal design annotations">Blueprint</button>
+</header>
+
+<main class="page-main">
+  <div class="container">
+
+    <h1 class="page-title reveal">About</h1>
+    <p class="page-lede reveal">How the work gets made, how the thinking runs, and what the site leaves out on purpose.</p>
+
+    <!-- HOW I BUILD -->
+    <section aria-label="How I build">
+      <div class="section-label">How I Build</div>
+      <div class="ann">Methods, not adjectives. "Builder" is a claim proved by how the work happens, not a word in a headline. Each line is a decision made before the first ticket is written.</div>
+      <div class="build-grid">
+        <div class="build-item reveal">
+          <div class="build-verb">Interview first.</div>
+          <div class="build-detail">Never take a request at face value, dig to real intent before building. The right spec answers the right question.</div>
+        </div>
+        <div class="build-item reveal reveal-delay-1">
+          <div class="build-verb">Write specs engineers build from.</div>
+          <div class="build-detail">Config-vs-code decided up front. Every item resolves to a fixture, a signature, or a runbook, never prose that leaves room to guess.</div>
+        </div>
+        <div class="build-item reveal reveal-delay-2">
+          <div class="build-verb">Map edge cases before the build.</div>
+          <div class="build-detail">The edge case that slips into production is the one nobody asked about in the spec.</div>
+        </div>
+        <div class="build-item reveal reveal-delay-3">
+          <div class="build-verb">QA with evidence.</div>
+          <div class="build-detail">A repeatable test method and client-facing UAT packs that carry regression coverage forward every release.</div>
+        </div>
+        <div class="build-item reveal">
+          <div class="build-verb">Prioritise by demand.</div>
+          <div class="build-detail">P0 through P3 by who's actually asking, not by effort. Effort is a cost. Demand is the reason.</div>
+        </div>
+        <div class="build-item reveal reveal-delay-1">
+          <div class="build-verb">Migrate with discipline.</div>
+          <div class="build-detail">Schema analysis, field mapping, validation, staged execution with review gates. No surprises in production.</div>
+        </div>
+        <div class="build-item reveal reveal-delay-2" style="grid-column: 1 / -1; border-bottom: none;">
+          <div class="build-verb">Own security.</div>
+          <div class="build-detail">ISO 27001 gap analysis, Statement of Applicability approver, quarterly compliance reviews. Security is product work, owned from the start, not a checklist handed to a different team.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW I THINK -->
+    <section aria-label="How I think">
+      <div class="section-label">How I Think</div>
+      <div class="ann">Placed after the work. Earn credibility with shipped scale, then show the operating system behind it. Reasoning, stated quietly, not performed.</div>
+      <ul class="thinking-list">
+        <li class="reveal">I start from first principles. If the reasoning does not hold from the ground up, the conclusion does not hold.</li>
+        <li class="reveal reveal-delay-1">I change my mind when the evidence does. Not on every signal, on the pattern.</li>
+        <li class="reveal reveal-delay-2">I look for what the data is missing. The absence of evidence is where I start reading.</li>
+        <li class="reveal reveal-delay-3">I watch for coordination failures, situations where everyone does the individually rational thing and the group outcome is bad. A lot of product problems are that, not execution problems.</li>
+        <li class="reveal reveal-delay-4">The most important data point is the one that never arrived.</li>
+      </ul>
+    </section>
+
+    <!-- WHAT WOULD CHANGE MY MIND -->
+    <section aria-label="What would change my mind">
+      <div class="section-label">What Would Change My Mind</div>
+      <div class="ann">A real list, kept and used, not a rhetorical flourish. If the list never changes, it isn't a list, it's a slogan.</div>
+      <ol class="mind-list">
+        <li class="reveal">If a feature I prioritised P0 ships and nobody who asked for it uses it, the demand-driven framework was reading the wrong signal, not just this one call.</li>
+        <li class="reveal reveal-delay-1">If a coordination failure I diagnosed turns out to be a plain execution gap once I look closer, I revise the diagnosis, not the story.</li>
+        <li class="reveal reveal-delay-2">If the pattern across three release cycles contradicts the pattern I called after one, the one call was noise.</li>
+        <li class="reveal reveal-delay-3">If an edge case mapped before a build still slips into production, the mapping process has a hole, not the engineer who missed it.</li>
+      </ol>
+    </section>
+
+    <!-- WHAT'S NOT HERE + THE MARK -->
+    <section id="not-here" aria-label="What's not here, and the mark">
+      <div class="section-label">What's Not Here</div>
+      <div class="mark-ring-pair">
+        <div class="ring-block reveal">
+          <h2>The ring stays empty. On purpose.</h2>
+          <ul class="ring-list">
+            <li>Employer and client names. Referenced by scale and sector, never by name.</li>
+            <li>Unverified numbers. A stat that can't be checked isn't a stat, it's a guess with a decimal point.</li>
+            <li>The next chapter. Route ends at "now," not at a forecast.</li>
+          </ul>
+          <div class="ann">Same argument as The Mark below, told twice: once as a diagram, once as a plain list. If a bomber makes it home with holes in the wings, the wings were never the problem.</div>
+        </div>
+        <div class="mark-block reveal">
+          <svg viewBox="0 0 96 96" aria-hidden="true"><use href="#tile" /></svg>
+          <div>
+            <h2>The mark is a return flight.</h2>
+            <p>In 1943, the US military mapped the bullet holes on bombers returning from Europe, wanting to armour the places hit most. The statistician <strong>Abraham Wald</strong> turned that inside out: the planes that came back survived those hits, that's why they were visible. Armour instead went where there were no holes, because planes hit there never made it home.</p>
+            <p>The mark draws that inversion directly: a top-view plane, seven amber hits on the wings and tail, and a dashed ring at the nose, drawn around nothing. <strong>The data in front of you is the data that survived</strong>: the empty ring is the whole argument.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHELF -->
+    <section id="shelf" aria-label="Shelf">
+      <div class="section-label">Shelf</div>
+      <p class="shelf-frame-line">Reading that shaped the register.</p>
+      <div class="ann">Not a review list, just the writers whose habits of mind rubbed off. You can tell which one taught you to stop hedging.</div>
+      <div class="shelf-list">
+        <div class="shelf-entry reveal">
+          <div class="shelf-author">Eliezer Yudkowsky</div>
+          <div class="shelf-note">Rationalist-community writing on reasoning under uncertainty. Where the "update on the pattern, not the noise" habit comes from.</div>
+        </div>
+        <div class="shelf-entry reveal reveal-delay-1">
+          <div class="shelf-author">Scott Alexander</div>
+          <div class="shelf-note">Long-form essays that hold an argument from first principles through to an uncomfortable conclusion, then stop.</div>
+        </div>
+        <div class="shelf-entry reveal reveal-delay-2">
+          <div class="shelf-author">Nate Soares</div>
+          <div class="shelf-note">Writing on AI alignment, read for the discipline of stating a claim plainly and defending it without hedging.</div>
+        </div>
+        <div class="shelf-entry reveal reveal-delay-3">
+          <div class="shelf-author">Nick Bostrom</div>
+          <div class="shelf-note">Long-horizon, civilizational-scale thinking. The Kardashev-scale habit of zooming out before zooming back in.</div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<div class="key-strip" aria-hidden="true">
+  <span class="key-strip-item"><span class="kbd">H</span> home</span>
+  <span class="key-strip-item"><span class="kbd">W</span> work</span>
+  <span class="key-strip-item"><span class="kbd">E</span> resume</span>
+  <span class="key-strip-item"><span class="kbd">B</span> blueprint</span>
+  <span class="key-strip-item"><span class="kbd">?</span> all keys</span>
+</div>
+
+<footer>
+  <svg viewBox="0 0 96 96" aria-hidden="true"><use href="#tile" /></svg>
+  <span class="footer-copy">&copy; 2026 Nihaan Mohammed &middot; built with Claude in the loop</span>
+</footer>
+
+<div class="overlay-backdrop" id="shortcut-overlay" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">
+  <div class="overlay-panel">
+    <h2>Keyboard shortcuts</h2>
+    <div class="overlay-list">
+      <div class="overlay-row"><span class="kbd">H</span><span class="desc">Home</span></div>
+      <div class="overlay-row"><span class="kbd">R</span><span class="desc">The Route</span></div>
+      <div class="overlay-row"><span class="kbd">W</span><span class="desc">Work</span></div>
+      <div class="overlay-row"><span class="kbd">A</span><span class="desc">About</span></div>
+      <div class="overlay-row"><span class="kbd">E</span><span class="desc">Resume</span></div>
+      <div class="overlay-row"><span class="kbd">C</span><span class="desc">Reveal contact details</span></div>
+      <div class="overlay-row"><span class="kbd">B</span><span class="desc">Toggle Blueprint mode</span></div>
+      <div class="overlay-row"><span class="kbd">Esc</span><span class="desc">Close the topmost open layer</span></div>
+    </div>
+    <div class="overlay-close-hint">Press Esc or click outside to close.</div>
+  </div>
+</div>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
