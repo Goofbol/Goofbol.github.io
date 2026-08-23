@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Work: Nihaan Mohammed</title>
+<meta name="description" content="Four worlds and the case files behind them: mGrant, mForm, Frappe open-source, and AI-assisted building." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect x='2' y='2' width='92' height='92' rx='18' fill='%238B1A1A'/%3E%3Cpolyline points='26,68 26,28 46,68 46,28 58,50 70,28 70,68' fill='none' stroke='%23FDFCFA' stroke-width='6.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='58' cy='50' r='2.6' fill='%23D4842A'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="assets/site.css" />
+<style>
+  .case-part-label.ask { color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="plane">
+      <line x1="48" y1="13" x2="48" y2="64" stroke-width="5.5" stroke-linecap="round" />
+      <polyline points="20,46 48,32 76,46" fill="none" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+      <polyline points="37,68 48,62 59,68" fill="none" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <g id="hits">
+      <circle cx="27" cy="42.5" r="2.4" /><circle cx="35" cy="38.5" r="2.4" />
+      <circle cx="61" cy="38.5" r="2.4" /><circle cx="69" cy="42.5" r="2.4" />
+      <circle cx="43" cy="64.7" r="2.4" /><circle cx="53" cy="64.7" r="2.4" />
+      <circle cx="48" cy="52" r="2.4" />
+    </g>
+    <g id="ring">
+      <circle cx="48" cy="20" r="8" fill="none" stroke-width="1.6" stroke-dasharray="3 3.2" opacity="0.85" />
+    </g>
+    <g id="reg" fill="none" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="33,86 33,74 43,86 43,74" />
+      <polyline points="49,86 49,74 56,81 63,74 63,86" />
+    </g>
+    <g id="tile">
+      <rect x="2" y="2" width="92" height="92" rx="18" fill="#8B1A1A" />
+      <use href="#plane" stroke="#FDFCFA" />
+      <use href="#hits" fill="#D4842A" />
+      <use href="#ring" stroke="#FDFCFA" />
+      <use href="#reg" stroke="#FDFCFA" />
+    </g>
+  </defs>
+</svg>
+
+<header class="topbar" role="banner">
+  <a href="index.html" class="wordmark">
+    <svg viewBox="0 0 96 96" aria-hidden="true"><use href="#plane" stroke="currentColor" /><use href="#hits" fill="#D4842A" /><use href="#ring" stroke="currentColor" /><use href="#reg" stroke="currentColor" /></svg>
+    Nihaan Mohammed<span class="dot">.</span>
+  </a>
+  <nav class="topbar-nav" aria-label="Page navigation">
+    <a href="index.html" class="nav-link"><span class="nav-key">H</span><span class="nav-label">Home</span></a>
+    <a href="route.html" class="nav-link"><span class="nav-key">R</span><span class="nav-label">Route</span></a>
+    <a href="work.html" class="nav-link"><span class="nav-key">W</span><span class="nav-label">Work</span></a>
+    <a href="about.html" class="nav-link"><span class="nav-key">A</span><span class="nav-label">About</span></a>
+    <a href="resume.html" class="nav-link"><span class="nav-key">E</span><span class="nav-label">Resume</span></a>
+  </nav>
+  <button id="bp-toggle" role="switch" aria-checked="false" aria-label="Blueprint mode: reveal design annotations">Blueprint</button>
+</header>
+
+<main class="page-main">
+  <div class="container">
+
+    <h1 class="page-title reveal">Selected work</h1>
+    <p class="page-lede reveal">Four worlds. Each opens into a case file: what was asked, what the real ask turned out to be, the call I made, and what shipped.</p>
+
+    <section aria-label="Four worlds">
+      <div class="cards-grid">
+        <a href="#w-mgrant" class="world-card reveal">
+          <div class="world-card-num">01</div>
+          <div class="world-card-name">mGrant</div>
+          <div class="world-card-desc">Grant lifecycle software for the corporates who give and the NGOs who receive.</div>
+        </a>
+        <a href="#w-mform" class="world-card reveal reveal-delay-1">
+          <div class="world-card-num">02</div>
+          <div class="world-card-name">mForm</div>
+          <div class="world-card-desc">Data collection engineered for the field: works offline, syncs when it can.</div>
+        </a>
+        <a href="#w-frappe" class="world-card reveal reveal-delay-2">
+          <div class="world-card-num">03</div>
+          <div class="world-card-name">Frappe &middot; open-source</div>
+          <div class="world-card-desc">Working across the Frappe/ERPNext ecosystem, platforms and internal tooling alike.</div>
+        </a>
+        <a href="#w-ai" class="world-card reveal reveal-delay-3">
+          <div class="world-card-num">04</div>
+          <div class="world-card-name">AI-assisted building</div>
+          <div class="world-card-desc">Rebuilding software delivery with agentic AI, and building the agents.</div>
+        </a>
+      </div>
+      <div class="ann">Four world cards number to match the deep dives below and jump-link to them, unchanged in structure from v2.</div>
+    </section>
+
+    <!-- DEEP DIVE 1 — mGrant -->
+    <div class="deep-dive reveal" id="w-mgrant" aria-label="mGrant deep dive">
+      <div class="deep-dive-header">
+        <div class="deep-dive-world-label">World 01</div>
+        <div class="deep-dive-title">mGrant</div>
+        <div class="deep-dive-sub">Both sides of the money.</div>
+      </div>
+      <div class="deep-dive-products">
+        <div class="product-block">
+          <div class="product-name">mGrant (Donor + CSR)</div>
+          <p class="product-desc">The grant-maker's side: RFP &rarr; application &rarr; grant &rarr; disbursement &rarr; compliance &rarr; impact. I built the compliance layer for India's Section 135 CSR mandate: statutory obligation calculation, budget attribution, year-end freeze, and the full set of statutory reports. Multi-year and lean grant pipelines. A four-tier results framework: input &rarr; output &rarr; outcome &rarr; impact.</p>
+        </div>
+        <div class="product-block">
+          <div class="product-name">mGrant NuO</div>
+          <p class="product-desc">The grantee's side: an NGO managing incoming funds, sub-grants to implementing partners, FCRA-aware fund tracking, logical-framework reporting, and periodic utilisation reports back to donors.</p>
+        </div>
+      </div>
+      <div class="stat-band">
+        100+ features across 70+ tenant setups &middot; 50+ sprints as product owner. A large rural-development foundation runs a &#8377;540 Cr, 239-grant portfolio on the platform, with 50+ board reports. I translate regulation, Section 135, FCRA, into product behaviour, and own security and compliance as Data Privacy Officer.
+      </div>
+      <div class="deep-dive-imgs">
+        <div class="img-frame" aria-label="Placeholder for a product screenshot"></div>
+        <div class="img-frame" aria-label="Placeholder for a product screenshot"></div>
+      </div>
+    </div>
+
+    <!-- DEEP DIVE 2 — mForm -->
+    <div class="deep-dive reveal" id="w-mform" aria-label="mForm deep dive">
+      <div class="deep-dive-header">
+        <div class="deep-dive-world-label">World 02</div>
+        <div class="deep-dive-title">mForm</div>
+        <div class="deep-dive-sub">Field data, offline-first.</div>
+      </div>
+      <div class="deep-dive-products">
+        <div class="product-block">
+          <div class="product-name">mForm (live platform)</div>
+          <p class="product-desc">The production platform serving 1 Lakh+ field users across 30+ organisations, built for low- and no-connectivity environments.</p>
+        </div>
+        <div class="product-block">
+          <div class="product-name">The rebuild (in progress)</div>
+          <p class="product-desc">Leading a ground-up rebuild on a modern Frappe stack, owning product direction for migrating an established client base onto the new platform. Designed the migration methodology end to end.</p>
+        </div>
+      </div>
+      <div class="stat-band">
+        Built the migration methodology end to end, a 10-phase delivery pipeline from discovery to hypercare, an enablement toolkit, and a Frappe Helpdesk-based internal hub that coordinates every migration project.
+      </div>
+      <div class="deep-dive-imgs">
+        <div class="img-frame" aria-label="Placeholder for a product screenshot"></div>
+        <div class="img-frame" aria-label="Placeholder for a product screenshot"></div>
+      </div>
+    </div>
+
+    <!-- DEEP DIVE 3 — Frappe / open-source -->
+    <div class="deep-dive reveal" id="w-frappe" aria-label="Frappe open-source deep dive">
+      <div class="deep-dive-header">
+        <div class="deep-dive-world-label">World 03</div>
+        <div class="deep-dive-title">Frappe &middot; open-source</div>
+        <div class="deep-dive-sub">Across the stack, in the open.</div>
+      </div>
+      <div class="deep-dive-products">
+        <div class="product-block">
+          <div class="product-name">Frappe Mobile (open source)</div>
+          <p class="product-desc">Product manager for an open-source Flutter-on-Frappe mobile platform: a client SDK (metadata-driven dynamic forms, offline-first SQLite sync) and a server app (mobile auth, OTP, force-update). Built so field apps work offline by default.</p>
+        </div>
+        <div class="product-block">
+          <div class="product-name">Frappe Helpdesk ticketing</div>
+          <p class="product-desc">Designing and building a Helpdesk-based ticketing and knowledge hub to run a multi-project delivery portfolio.</p>
+        </div>
+        <div class="product-block">
+          <div class="product-name">Internal delivery toolkit</div>
+          <p class="product-desc">Built a Claude Code plugin that encodes the whole Frappe build methodology, skills, agents, and safety guardrails, so the team ships consistently.</p>
+        </div>
+      </div>
+      <div class="stat-band">
+        I read and review across the stack, data models, the security layer, the framework itself, not just configuration.
+      </div>
+    </div>
+
+    <!-- DEEP DIVE 4 — AI-assisted building -->
+    <div class="deep-dive reveal" id="w-ai" aria-label="AI-assisted building deep dive">
+      <div class="deep-dive-header">
+        <div class="deep-dive-world-label">World 04</div>
+        <div class="deep-dive-title">AI-assisted building</div>
+        <div class="deep-dive-sub">Rebuilt how delivery works.</div>
+      </div>
+      <div class="deep-dive-products">
+        <div class="product-block">
+          <div class="product-name">Builder Protocol</div>
+          <p class="product-desc">A three-role, eight-phase AI-assisted delivery model, the Architect defines and decides, an AI tool builds, a human reviews before ship. It replaced a six-specialist SDLC and runs live across 5+ client builds. A memory layer keeps context, security rules, and decisions persistent across sessions.</p>
+        </div>
+        <div class="product-block">
+          <div class="product-name">Proddy</div>
+          <p class="product-desc">A personal AI agent for product work: triage, minutes, specs, follow-ups. <a href="https://github.com/Goofbol/proddy" target="_blank" rel="noopener noreferrer">github.com/Goofbol/proddy</a></p>
+        </div>
+        <div class="product-block">
+          <div class="product-name">AI-enablement program</div>
+          <p class="product-desc">Founded and ran an internal program teaching domain experts, not engineers, to ship real products with agentic tools, from vibe-coding to CLI, hooks, agent skills, and MCP.</p>
+        </div>
+      </div>
+      <div class="stat-band">
+        5+ client builds running live on the Builder Protocol model. The Architect role is a product call, not a technical one: deciding what gets built, what does not, and why.
+      </div>
+    </div>
+    <div class="ann">Each world card above opens into its own deep dive: more product detail, a stat band at the close. The dashed frames are waiting on real screenshots, not standing in for them forever.</div>
+
+    <div class="case-files">
+      <div class="case-files-label">Case files</div>
+      <p class="case-files-intro">Each case file opens with what was asked, then what the real ask turned out to be: the interview, made visible.</p>
+
+      <div class="case-index">
+        <button type="button" class="case-card" id="caseBuilderProtocolBtn" aria-expanded="true" aria-controls="caseBuilderProtocol">
+          <span class="case-card-name">Builder Protocol</span>
+          <span class="case-card-teaser">A three-role AI-assisted delivery model, running across three enterprise accounts.</span>
+        </button>
+
+        <button type="button" class="case-card" id="casePunjabBtn" aria-expanded="false" aria-controls="casePunjab">
+          <span class="case-card-name">Punjab e-Governance</span>
+          <span class="case-card-teaser">Election logging and an e-Governance build for the Government of Punjab, shipped with a 20+ intern cohort, before any of it was a job.</span>
+        </button>
+
+        <div class="case-card ghost" aria-hidden="true">
+          <span class="case-card-name">Healthcare</span>
+          <span class="skel-tag">in the hangar</span>
+        </div>
+
+        <div class="case-card ghost" aria-hidden="true">
+          <span class="case-card-name">Education</span>
+          <span class="skel-tag">in the hangar</span>
+        </div>
+
+        <div class="case-detail" id="caseBuilderProtocol">
+          <div>
+            <div class="case-part-label ask">The ask</div>
+            <div class="case-part-body">Make AI tools speed up software delivery.</div>
+          </div>
+          <div>
+            <div class="case-part-label">The real ask</div>
+            <div class="case-part-body">Enterprise delivery where specs, builds, and QA all queued on the same few people. Speed wasn't the constraint, headcount was, and no amount of faster typing fixes a queue.</div>
+          </div>
+          <div>
+            <div class="case-part-label">The call</div>
+            <div class="case-part-body">A three-role AI-assisted delivery model: Product Builder, System Architect, Account Manager, agents inside the loop, humans owning review and sign-off.</div>
+          </div>
+          <div>
+            <div class="case-part-label">What shipped</div>
+            <div class="case-part-body">The protocol running across three enterprise accounts, from spec to verified build.</div>
+          </div>
+          <div style="grid-column: 1 / -1;">
+            <div class="case-part-label">Proof</div>
+            <div class="case-part-body"><span class="chip proof">Running across three enterprise accounts, spec to verified build.</span></div>
+          </div>
+        </div>
+
+        <div class="case-detail" id="casePunjab" hidden>
+          <div>
+            <div class="case-part-label ask">The ask</div>
+            <div class="case-part-body">Build an election-day logging tool.</div>
+          </div>
+          <div>
+            <div class="case-part-label">The real ask</div>
+            <div class="case-part-body">A state government needed election-day logging and citizen-facing e-Governance both, with student capacity as the only build resource. The tool was the smaller half of the problem; structuring 20+ interns into shippable workstreams was the real one.</div>
+          </div>
+          <div>
+            <div class="case-part-label">The call</div>
+            <div class="case-part-body">Structure a 20+ intern cohort into shippable workstreams.</div>
+          </div>
+          <div>
+            <div class="case-part-label">What shipped</div>
+            <div class="case-part-body">The logging system and the e-Governance build, live for the 2022 cycle.</div>
+          </div>
+          <div style="grid-column: 1 / -1;">
+            <div class="case-part-label">Proof</div>
+            <div class="case-part-body"><span class="chip proof">Live for the 2022 cycle, shipped with a 20+ intern cohort.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="ann">The ask and the real ask are rarely the same sentence. Every case file opens with both, so "interview first" is a format here, not a claim I'm asking you to trust. The two ghost cards are queued, not built: a roadmap should be able to say that out loud.</div>
+    </div>
+
+  </div>
+</main>
+
+<div class="key-strip" aria-hidden="true">
+  <span class="key-strip-item"><span class="kbd">&uarr;&darr;</span> case files</span>
+  <span class="key-strip-item"><span class="kbd">&crarr;</span> open</span>
+  <span class="key-strip-item"><span class="kbd">H</span> home</span>
+  <span class="key-strip-item"><span class="kbd">B</span> blueprint</span>
+  <span class="key-strip-item"><span class="kbd">?</span> all keys</span>
+</div>
+
+<footer>
+  <svg viewBox="0 0 96 96" aria-hidden="true"><use href="#tile" /></svg>
+  <span class="footer-copy">&copy; 2026 Nihaan Mohammed &middot; built with Claude in the loop</span>
+</footer>
+
+<div class="overlay-backdrop" id="shortcut-overlay" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">
+  <div class="overlay-panel">
+    <h2>Keyboard shortcuts</h2>
+    <div class="overlay-list">
+      <div class="overlay-row"><span class="kbd">H</span><span class="desc">Home</span></div>
+      <div class="overlay-row"><span class="kbd">R</span><span class="desc">The Route</span></div>
+      <div class="overlay-row"><span class="kbd">W</span><span class="desc">Work</span></div>
+      <div class="overlay-row"><span class="kbd">A</span><span class="desc">About</span></div>
+      <div class="overlay-row"><span class="kbd">E</span><span class="desc">Resume</span></div>
+      <div class="overlay-row"><span class="kbd">C</span><span class="desc">Reveal contact details</span></div>
+      <div class="overlay-row"><span class="kbd">B</span><span class="desc">Toggle Blueprint mode</span></div>
+      <div class="overlay-row"><span class="kbd">&uarr;&darr;</span><span class="desc">Move between case files</span></div>
+      <div class="overlay-row"><span class="kbd">&crarr;</span><span class="desc">Open the focused case file</span></div>
+      <div class="overlay-row"><span class="kbd">Esc</span><span class="desc">Close the topmost open layer</span></div>
+    </div>
+    <div class="overlay-close-hint">Press Esc or click outside to close.</div>
+  </div>
+</div>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
