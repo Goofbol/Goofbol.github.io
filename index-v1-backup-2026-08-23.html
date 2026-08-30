@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nihaan Mohammed — Product Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =============================================
+       CSS CUSTOM PROPERTIES — LIGHT MODE
+       ============================================= */
+    :root {
+      --cream:        #FDFCFA;
+      --surface:      #F2EDE7;
+      --surface-2:    #EDE6DD;
+      --maroon:       #8B1A1A;
+      --amber:        #D4842A;
+      --amber-dim:    rgba(212, 132, 42, 0.15);
+      --text:         #2C2C2C;
+      --text-muted:   #6B6560;
+      --border:       #E4DDD6;
+
+      --font-serif:   'Fraunces', Georgia, serif;
+      --font-sans:    'Space Grotesk', sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
+
+      --max-w:        940px;
+      --pad:          clamp(1.5rem, 5vw, 3rem);
+
+      --bp-grid:      rgba(212, 132, 42, 0.08);
+      --bp-line:      rgba(212, 132, 42, 0.45);
+      --bp-note-bg:   rgba(242, 237, 231, 0.97);
+      --bp-note-border: rgba(212, 132, 42, 0.55);
+      --bp-text:      #2C2C2C;
+
+      --transition:   300ms ease;
+      --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* =============================================
+       RESET & BASE
+       ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background var(--transition), color var(--transition);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--amber);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    /* =============================================
+       BLUEPRINT MODE
+       ============================================= */
+    body.blueprint {
+      --cream:       #14100c;
+      --surface:     #1e1812;
+      --surface-2:   #231d16;
+      --maroon:      #D4842A;
+      --amber:       #D4842A;
+      --amber-dim:   rgba(212, 132, 42, 0.12);
+      --text:        #F2EDE7;
+      --text-muted:  #B0A89E;
+      --border:      rgba(212, 132, 42, 0.25);
+
+      --bp-grid:     rgba(212, 132, 42, 0.12);
+      --bp-note-bg:  rgba(30, 24, 18, 0.97);
+      --bp-note-border: rgba(212, 132, 42, 0.65);
+      --bp-text:     #F2EDE7;
+
+      background-color: #14100c;
+      background-image:
+        linear-gradient(rgba(212, 132, 42, 0.10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 132, 42, 0.10) 1px, transparent 1px),
+        linear-gradient(rgba(212, 132, 42, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 132, 42, 0.04) 1px, transparent 1px);
+      background-size: 140px 140px, 140px 140px, 28px 28px, 28px 28px;
+      color: #F2EDE7;
+    }
+
+    body.blueprint .topbar {
+      background: rgba(20, 16, 12, 0.94);
+      border-bottom-color: rgba(212, 132, 42, 0.25);
+    }
+    body.blueprint .world-card { background: rgba(30, 24, 18, 0.85); border-color: rgba(212, 132, 42, 0.22); }
+    body.blueprint .world-card:hover { border-color: rgba(212, 132, 42, 0.55); }
+    body.blueprint .deep-dive { background: rgba(26, 20, 14, 0.6); border-color: rgba(212, 132, 42, 0.18); }
+    body.blueprint .product-block { border-color: rgba(212, 132, 42, 0.18); }
+    body.blueprint .stat-band { background: rgba(30, 24, 18, 0.7); border-color: rgba(212, 132, 42, 0.22); }
+    body.blueprint .section-label { border-bottom-color: rgba(212, 132, 42, 0.22); }
+    body.blueprint .shelf-stub { border-color: rgba(212, 132, 42, 0.22); }
+    body.blueprint .contact-reveal { background: rgba(30, 24, 18, 0.9); border-color: rgba(212, 132, 42, 0.22); }
+    body.blueprint .skill-chip { background: rgba(212, 132, 42, 0.12); border-color: rgba(212, 132, 42, 0.28); color: #B0A89E; }
+    body.blueprint .exp-entry { border-left-color: rgba(212, 132, 42, 0.3); }
+    body.blueprint .glance-band { background: rgba(30, 24, 18, 0.6); border-color: rgba(212, 132, 42, 0.18); }
+    body.blueprint footer { border-top-color: rgba(212, 132, 42, 0.18); }
+    body.blueprint .nav-link { color: #B0A89E; }
+    body.blueprint .nav-link:hover { color: #D4842A; }
+    body.blueprint #bp-toggle { background: rgba(212, 132, 42, 0.15); border-color: rgba(212, 132, 42, 0.4); color: #D4842A; }
+    body.blueprint #bp-toggle[aria-checked="true"] { background: #D4842A; color: #14100c; border-color: #D4842A; }
+    body.blueprint .contact-btn { border-color: #D4842A; color: #D4842A; }
+    body.blueprint .contact-btn:hover { background: #D4842A; color: #14100c; }
+    body.blueprint .bp-note { background: var(--bp-note-bg); border-color: var(--bp-note-border); color: #F2EDE7; }
+    body.blueprint .bp-ann-toggle::before { background: var(--bp-note-bg); border-color: var(--bp-note-border); }
+    body.blueprint .build-item { border-color: rgba(212, 132, 42, 0.18); }
+    body.blueprint .divider-motif line { stroke: rgba(212, 132, 42, 0.4); }
+    body.blueprint .divider-motif circle { fill: #D4842A; }
+    body.blueprint .divider-motif path { stroke: rgba(212, 132, 42, 0.4); }
+
+    /* =============================================
+       LAYOUT WRAPPERS
+       ============================================= */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
+
+    /* =============================================
+       TOP BAR
+       ============================================= */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253, 252, 250, 0.93);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 var(--pad);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .wordmark {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      transition: color var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* The slide-curve→dot motif as wordmark accent */
+    .wordmark-motif {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .topbar-nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(0.9rem, 2.5vw, 1.75rem);
+      margin-left: auto;
+    }
+
+    .nav-link {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      transition: color var(--transition);
+      white-space: nowrap;
+    }
+    .nav-link:hover { color: var(--text); }
+
+    .topbar-socials {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .social-icon {
+      display: flex;
+      align-items: center;
+      color: var(--text-muted);
+      transition: color var(--transition);
+      padding: 0.2rem;
+    }
+    .social-icon:hover { color: var(--amber); }
+    .social-icon svg { display: block; width: 16px; height: 16px; fill: currentColor; }
+
+    .topbar-divider {
+      width: 1px;
+      height: 18px;
+      background: var(--border);
+      flex-shrink: 0;
+      transition: background var(--transition);
+    }
+
+    /* =============================================
+       BLUEPRINT TOGGLE
+       ============================================= */
+    .bp-toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .bp-hint {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      transition: color var(--transition), opacity var(--transition);
+    }
+
+    #bp-toggle {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.28rem 0.6rem;
+      cursor: pointer;
+      transition:
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+      outline: none;
+      white-space: nowrap;
+    }
+    #bp-toggle:focus-visible { box-shadow: 0 0 0 2px var(--amber); }
+    #bp-toggle[aria-checked="true"] { background: var(--amber); color: #fff; border-color: var(--amber); }
+    #bp-toggle::after {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+      margin-left: 0.4rem;
+      opacity: 0.5;
+      vertical-align: middle;
+      transition: opacity var(--transition);
+    }
+    #bp-toggle[aria-checked="true"]::after { opacity: 1; }
+
+    /* =============================================
+       MAIN CONTENT
+       ============================================= */
+    main {
+      padding: clamp(3rem, 8vw, 5rem) var(--pad);
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    /* =============================================
+       REVEAL ON SCROLL
+       ============================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s var(--ease-out), transform 0.65s var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
+    /* =============================================
+       HERO
+       ============================================= */
+    .hero {
+      padding: clamp(2rem, 6vw, 4rem) 0 clamp(2.5rem, 6vw, 4rem);
+      position: relative;
+    }
+
+    .hero-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+      transition: color var(--transition);
+    }
+
+    .hero-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5.5vw, 3.25rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--maroon);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      max-width: 680px;
+      transition: color var(--transition);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--text);
+      max-width: 580px;
+      font-weight: 300;
+      transition: color var(--transition);
+    }
+
+    .hero-location {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-top: 1.8rem;
+      transition: color var(--transition);
+    }
+
+    /* =============================================
+       SECTION DIVIDER MOTIF — slide-curve → dot
+       ============================================= */
+    .divider-motif {
+      display: block;
+      margin: 0 auto 2.5rem;
+      overflow: visible;
+    }
+    .divider-motif line { stroke: rgba(139, 26, 26, 0.2); stroke-width: 0.8; transition: stroke var(--transition); }
+    .divider-motif path { stroke: var(--amber); stroke-width: 1.2; fill: none; transition: stroke var(--transition); }
+    .divider-motif circle { fill: var(--amber); transition: fill var(--transition); }
+
+    /* =============================================
+       SECTION HEADERS
+       ============================================= */
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+      transition: color var(--transition), border-color var(--transition);
+    }
+
+    section {
+      margin-bottom: clamp(3.5rem, 9vw, 6rem);
+      position: relative;
+    }
+
+    /* =============================================
+       WORK — SELECTED WORLD OVERVIEW CARDS
+       ============================================= */
+    .worlds-overview {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-bottom: clamp(3rem, 7vw, 5rem);
+    }
+
+    @media (max-width: 780px) {
+      .worlds-overview { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .worlds-overview { grid-template-columns: 1fr; }
+    }
+
+    .world-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 1.4rem 1.3rem 1.25rem;
+      cursor: pointer;
+      transition:
+        border-color var(--transition),
+        box-shadow var(--transition),
+        background var(--transition),
+        transform 220ms var(--ease-out);
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .world-card:hover {
+      border-color: rgba(212, 132, 42, 0.5);
+      box-shadow: 0 4px 20px rgba(139, 26, 26, 0.07);
+      transform: translateY(-2px);
+    }
+
+    .world-card:focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 2px;
+    }
+
+    .world-num {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: var(--amber);
+      letter-spacing: 0.12em;
+      opacity: 0.7;
+    }
+
+    .world-name {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--maroon);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      transition: color var(--transition);
+    }
+
+    .world-tagline {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      font-weight: 300;
+      flex: 1;
+      transition: color var(--transition);
+    }
+
+    .world-metric {
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      color: var(--amber);
+      letter-spacing: 0.03em;
+      line-height: 1.4;
+    }
+
+    .world-explore {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      margin-top: 0.25rem;
+      transition: color var(--transition);
+    }
+
+    .world-card:hover .world-explore { color: var(--amber); }
+
+    /* =============================================
+       DEEP DIVE SECTIONS
+       ============================================= */
+    .deep-dive {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .deep-dive-header {
+      padding: 1.6rem 1.8rem 0;
+    }
+
+    .deep-dive-world-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--amber);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .deep-dive-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--maroon);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 0.2rem;
+      transition: color var(--transition);
+    }
+
+    .deep-dive-sub {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      font-style: italic;
+      padding-bottom: 1.4rem;
+      transition: color var(--transition);
+    }
+
+    .deep-dive-products {
+      padding: 0 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .product-block {
+      padding: 1.35rem 0;
+      border-top: 1px solid var(--border);
+      transition: border-color var(--transition);
+    }
+
+    .product-name {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--maroon);
+      margin-bottom: 0.45rem;
+      transition: color var(--transition);
+    }
+
+    .product-desc {
+      font-size: 0.88rem;
+      color: var(--text);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 680px;
+      transition: color var(--transition);
+    }
+
+    .product-desc a {
+      color: var(--amber);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition);
+    }
+    .product-desc a:hover { border-bottom-color: var(--amber); }
+
+    /* placeholder token styling */
+    .placeholder-token {
+      font-family: var(--font-mono);
+      font-size: 0.75em;
+      background: var(--amber-dim);
+      color: var(--amber);
+      border: 1px dashed var(--amber);
+      border-radius: 2px;
+      padding: 0.05em 0.3em;
+      letter-spacing: 0.04em;
+    }
+
+    .stat-band {
+      margin: 1.4rem 1.8rem 1.8rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 1rem 1.25rem;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      line-height: 1.6;
+      font-style: italic;
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+    }
+
+    /* =============================================
+       EXPERIENCE STRIP
+       ============================================= */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .exp-entry {
+      padding: 1.3rem 0 1.3rem 1.5rem;
+      border-left: 2px solid var(--border);
+      position: relative;
+      transition: border-color var(--transition);
+    }
+
+    .exp-entry::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 1.6rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: background var(--transition), border-color var(--transition);
+      border: 2px solid var(--cream);
+      box-shadow: 0 0 0 1px var(--border);
+    }
+
+    .exp-entry:first-child::before {
+      background: var(--amber);
+      box-shadow: 0 0 0 1px var(--amber);
+    }
+
+    .exp-title { font-size: 0.95rem; font-weight: 500; color: var(--text); line-height: 1.3; margin-bottom: 0.2rem; transition: color var(--transition); }
+    .exp-org { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; margin-bottom: 0.15rem; transition: color var(--transition); }
+    .exp-date { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-muted); letter-spacing: 0.06em; transition: color var(--transition); }
+    .exp-note { font-size: 0.82rem; color: var(--text-muted); font-weight: 300; margin-top: 0.35rem; line-height: 1.5; transition: color var(--transition); }
+
+    /* =============================================
+       AT A GLANCE BAND
+       ============================================= */
+    .glance-band {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.6rem;
+      margin-top: 2.5rem;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .glance-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 2rem;
+    }
+
+    @media (max-width: 600px) { .glance-grid { grid-template-columns: 1fr; gap: 1.2rem; } }
+
+    .glance-group-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+      transition: color var(--transition);
+    }
+
+    .chip-wrap { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .skill-chip {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.2rem 0.5rem;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+    }
+
+    .edu-line { font-size: 0.85rem; color: var(--text); font-weight: 300; line-height: 1.55; transition: color var(--transition); }
+    .edu-note { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem; font-style: italic; transition: color var(--transition); }
+
+    /* =============================================
+       HOW I BUILD — new section
+       ============================================= */
+    .build-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    @media (max-width: 640px) { .build-grid { grid-template-columns: 1fr; } }
+
+    .build-item {
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: border-color var(--transition);
+    }
+
+    .build-item:nth-child(odd) { padding-right: 1.5rem; }
+    .build-item:nth-child(even) { padding-left: 1.5rem; border-left: 1px solid var(--border); }
+
+    /* last row: no bottom border */
+    .build-item:nth-last-child(-n+2) { border-bottom: none; }
+    /* when single col, restore last item border behavior */
+    @media (max-width: 640px) {
+      .build-item:nth-child(odd) { padding-right: 0; }
+      .build-item:nth-child(even) { padding-left: 0; border-left: none; }
+      .build-item:last-child { border-bottom: none; }
+      .build-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+      .build-item:last-child { border-bottom: none; }
+    }
+
+    .build-verb {
+      font-family: var(--font-serif);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--maroon);
+      margin-bottom: 0.25rem;
+      transition: color var(--transition);
+    }
+
+    .build-detail {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      line-height: 1.6;
+      transition: color var(--transition);
+    }
+
+    /* =============================================
+       HOW I THINK
+       ============================================= */
+    .thinking-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      max-width: 540px;
+    }
+
+    .thinking-list li {
+      font-size: 0.93rem;
+      color: var(--text);
+      line-height: 1.65;
+      font-weight: 300;
+      padding-left: 1.2rem;
+      position: relative;
+      transition: color var(--transition);
+    }
+
+    .thinking-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--amber);
+      font-size: 0.82rem;
+    }
+
+    /* =============================================
+       SHELF (STUB)
+       ============================================= */
+    .shelf-stub {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      border: 1px dashed var(--border);
+      border-radius: 4px;
+      padding: 1.4rem 1.5rem;
+      letter-spacing: 0.04em;
+      background: transparent;
+      transition: color var(--transition), border-color var(--transition);
+    }
+
+    .shelf-stub span { color: var(--amber); }
+
+    /* =============================================
+       CONTACT — REVEAL ON INTENT
+       ============================================= */
+    .contact-wrap { position: relative; }
+
+    .contact-btn {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--maroon);
+      background: transparent;
+      border: 1px solid var(--maroon);
+      border-radius: 3px;
+      padding: 0.6rem 1.3rem;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+    }
+
+    .contact-btn:hover { background: var(--maroon); color: var(--cream); }
+    .contact-btn:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+
+    .contact-reveal {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      animation: fadeUp 300ms ease forwards;
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .contact-reveal.visible { display: block; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .contact-links { display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .contact-row { display: flex; align-items: baseline; gap: 0.75rem; }
+
+    .contact-label {
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      min-width: 90px;
+      transition: color var(--transition);
+    }
+
+    .contact-value { font-size: 0.88rem; color: var(--text); font-weight: 300; transition: color var(--transition); }
+
+    .contact-value a {
+      color: var(--amber);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition);
+    }
+    .contact-value a:hover { border-bottom-color: var(--amber); }
+
+    /* =============================================
+       FOOTER
+       ============================================= */
+    footer {
+      padding: 2rem var(--pad);
+      border-top: 1px solid var(--border);
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      transition: border-color var(--transition);
+    }
+
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      transition: color var(--transition);
+    }
+
+    /* =============================================
+       BLUEPRINT ANNOTATIONS
+       ============================================= */
+    .bp-annotation {
+      position: absolute;
+      z-index: 50;
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 300ms ease;
+    }
+
+    body.blueprint .bp-annotation { opacity: 1; }
+
+    .bp-note {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      line-height: 1.55;
+      color: var(--bp-text);
+      background: var(--bp-note-bg);
+      border: 1px solid var(--bp-note-border);
+      border-radius: 2px;
+      padding: 0.5rem 0.65rem;
+      max-width: 210px;
+      white-space: normal;
+      letter-spacing: 0.01em;
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+    }
+
+    .bp-connector { flex-shrink: 0; }
+
+    /* Hero annotation */
+    .bp-ann-hero { top: 1.5rem; right: -240px; flex-direction: row; }
+    @media (max-width: 1200px) { .bp-ann-hero { right: auto; left: 0; top: -105px; flex-direction: column-reverse; } }
+
+    /* Work overview annotation */
+    .bp-ann-worlds { top: -80px; right: 0; }
+    @media (max-width: 1100px) { .bp-ann-worlds { display: none; } }
+
+    /* How I build annotation */
+    .bp-ann-build { top: 0; right: -240px; }
+    @media (max-width: 1200px) { .bp-ann-build { display: none; } }
+
+    /* Experience annotation */
+    .bp-ann-exp { top: 0; right: -240px; }
+    @media (max-width: 1200px) { .bp-ann-exp { display: none; } }
+
+    /* How I think annotation */
+    .bp-ann-think { top: 0; right: -240px; }
+    @media (max-width: 1200px) { .bp-ann-think { display: none; } }
+
+    /* Shelf annotation */
+    .bp-ann-shelf { top: 0; right: -240px; }
+    @media (max-width: 1200px) { .bp-ann-shelf { display: none; } }
+
+    /* Contact annotation */
+    .bp-ann-contact { top: 0; right: -240px; }
+    @media (max-width: 1200px) { .bp-ann-contact { display: none; } }
+
+    /* Toggle annotation */
+    .bp-ann-toggle {
+      position: absolute;
+      top: 110%;
+      right: 0;
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms ease 150ms;
+    }
+    body.blueprint .bp-ann-toggle { opacity: 1; }
+    .bp-ann-toggle .bp-note { max-width: 190px; }
+    .bp-ann-toggle::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      right: 18px;
+      width: 8px;
+      height: 8px;
+      background: var(--bp-note-bg);
+      border-left: 1px solid var(--bp-note-border);
+      border-top: 1px solid var(--bp-note-border);
+      transform: rotate(45deg);
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    /* Glance annotation */
+    .bp-ann-glance { top: 2.5rem; right: -240px; }
+    @media (max-width: 1200px) { .bp-ann-glance { display: none; } }
+
+    /* Hide all annotations on mobile */
+    @media (max-width: 600px) {
+      .bp-annotation, .bp-ann-toggle { display: none !important; }
+    }
+
+    /* Blueprint mode: expand main to give room */
+    @media (min-width: 1200px) {
+      body.blueprint main {
+        max-width: calc(var(--max-w) + 300px);
+        padding-right: 280px;
+      }
+    }
+
+    /* =============================================
+       RESPONSIVE TOPBAR
+       ============================================= */
+    @media (max-width: 700px) { .topbar-nav { display: none; } .bp-hint { display: none; } }
+    @media (max-width: 480px) { .topbar-socials { display: none; } .topbar-divider { display: none; } }
+
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="topbar" role="banner">
+    <div class="wordmark">
+      <!-- Slide-curve → dot motif as wordmark accent -->
+      <svg class="wordmark-motif" width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">
+        <path d="M1 1 C6 1, 10 13, 16 13" stroke="#D4842A" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+        <circle cx="20" cy="13" r="2" fill="#D4842A"/>
+      </svg>
+      Nihaan Mohammed
+    </div>
+
+    <nav class="topbar-nav" aria-label="Page sections">
+      <a href="#work" class="nav-link">Work</a>
+      <a href="#how-i-build" class="nav-link">How I build</a>
+      <a href="#how-i-think" class="nav-link">How I think</a>
+      <a href="#shelf" class="nav-link">Shelf</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <div class="topbar-socials">
+      <a href="https://linkedin.com/in/nihaan-mohammed" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+      <a href="https://github.com/Goofbol" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="topbar-divider" aria-hidden="true"></div>
+
+    <div class="bp-toggle-wrap">
+      <span class="bp-hint" id="bp-hint-text">see the thinking</span>
+      <button
+        id="bp-toggle"
+        role="switch"
+        aria-checked="false"
+        aria-label="Blueprint mode: reveal design annotations"
+      >Blueprint</button>
+
+      <div class="bp-ann-toggle" aria-hidden="true">
+        <div class="bp-note">Off: the work. On: why it is arranged this way. The toggle is the portfolio inside the portfolio.</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Introduction">
+
+      <div class="bp-annotation bp-ann-hero" aria-hidden="true">
+        <svg class="bp-connector" width="24" height="40" viewBox="0 0 24 40" fill="none">
+          <line x1="0" y1="20" x2="20" y2="20" stroke="#D4842A" stroke-width="0.8" stroke-dasharray="3 2"/>
+          <circle cx="22" cy="20" r="2" fill="#D4842A"/>
+        </svg>
+        <div class="bp-note">The first line is a claim, not a job title. A PM who reads code and owns the call is rare. Lead with what they do not expect — before they have decided whether to keep reading.</div>
+      </div>
+
+      <div class="hero-tag reveal">Product Manager</div>
+      <h1 class="hero-headline reveal reveal-delay-1">I design the system.<br>Engineers build from my specs.</h1>
+      <p class="hero-sub reveal reveal-delay-2">
+        Four years building data-heavy grants and field-data software — from stakeholder requirements to shipped features at scale. I read the data model, review the security layer, own the compliance call, and write specs engineers build from directly.
+      </p>
+      <div class="hero-location reveal reveal-delay-3">Tech for good &nbsp;·&nbsp; New Delhi</div>
+    </section>
+
+    <!-- DIVIDER MOTIF -->
+    <svg class="divider-motif reveal" width="160" height="18" viewBox="0 0 160 18" aria-hidden="true">
+      <line x1="0" y1="9" x2="100" y2="9"/>
+      <path d="M100 9 C112 9, 120 17, 132 17"/>
+      <circle cx="136" cy="17" r="2.5"/>
+    </svg>
+
+    <!-- WORK — HYBRID LAYOUT -->
+    <section id="work" aria-label="Selected work">
+      <div class="section-label">Selected work</div>
+
+      <div class="bp-annotation bp-ann-worlds" aria-hidden="true">
+        <div class="bp-note">Worlds before details. A recruiter decides in seconds whether to read on — give them the shape first, the depth on demand. Four cards answer "what does this person build?" in one glance.</div>
+        <svg class="bp-connector" width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <line x1="2" y1="0" x2="2" y2="18" stroke="#D4842A" stroke-width="0.8" stroke-dasharray="3 2"/>
+          <polygon points="0,18 4,18 2,20" fill="#D4842A"/>
+        </svg>
+      </div>
+
+      <!-- Overview row — four summary cards -->
+      <div class="worlds-overview" role="list">
+
+        <a href="#w-mgrant" class="world-card reveal" role="listitem" aria-label="mGrant — scroll to details">
+          <div class="world-num">01</div>
+          <div class="world-name">mGrant</div>
+          <div class="world-tagline">Grant lifecycle software for the corporates who give and the NGOs who receive.</div>
+          <div class="world-metric">₹5,000 Cr+ governed · 40+ donors · 1,500+ NGOs</div>
+          <div class="world-explore">Explore ↓</div>
+        </a>
+
+        <a href="#w-mform" class="world-card reveal reveal-delay-1" role="listitem" aria-label="mForm — scroll to details">
+          <div class="world-num">02</div>
+          <div class="world-name">mForm</div>
+          <div class="world-tagline">Data collection engineered for the field — works offline, syncs when it can.</div>
+          <div class="world-metric">1 Lakh+ offline users · 30+ organisations</div>
+          <div class="world-explore">Explore ↓</div>
+        </a>
+
+        <a href="#w-frappe" class="world-card reveal reveal-delay-2" role="listitem" aria-label="Frappe open-source — scroll to details">
+          <div class="world-num">03</div>
+          <div class="world-name">Frappe · open-source</div>
+          <div class="world-tagline">Working across the Frappe/ERPNext ecosystem — open-source platforms and internal tooling alike.</div>
+          <div class="world-metric">Open-source · field-grade</div>
+          <div class="world-explore">Explore ↓</div>
+        </a>
+
+        <a href="#w-ai" class="world-card reveal reveal-delay-3" role="listitem" aria-label="AI-assisted building — scroll to details">
+          <div class="world-num">04</div>
+          <div class="world-name">AI-assisted building</div>
+          <div class="world-tagline">Rebuilding software delivery with agentic AI — and building the agents.</div>
+          <div class="world-metric">5+ client builds · live</div>
+          <div class="world-explore">Explore ↓</div>
+        </a>
+
+      </div>
+
+      <!-- DEEP DIVE 1 — mGrant -->
+      <div class="deep-dive reveal" id="w-mgrant" aria-label="mGrant deep dive">
+        <div class="deep-dive-header">
+          <div class="deep-dive-world-label">World 01</div>
+          <div class="deep-dive-title">mGrant</div>
+          <div class="deep-dive-sub">Both sides of the money.</div>
+        </div>
+        <div class="deep-dive-products">
+
+          <div class="product-block">
+            <div class="product-name">mGrant (Donor + CSR)</div>
+            <p class="product-desc">The grant-maker's side: RFP → application → grant → disbursement → compliance → impact. I built the compliance layer for India's Section 135 CSR mandate — statutory obligation calculation, budget attribution, year-end freeze, and the full set of statutory reports. Multi-year and lean grant pipelines. A four-tier results framework: input → output → outcome → impact.</p>
+          </div>
+
+          <div class="product-block">
+            <div class="product-name">mGrant NuO</div>
+            <p class="product-desc">The grantee's side: an NGO managing incoming funds — sub-grants to implementing partners, FCRA-aware fund tracking, logical-framework reporting, and periodic utilisation reports back to donors.</p>
+          </div>
+
+        </div>
+        <div class="stat-band">
+          100+ features across 70+ tenant setups · 50+ sprints as product owner. A large rural-development foundation runs a ₹540 Cr, 239-grant portfolio on the platform, with 50+ board reports. I translate regulation — Section 135, FCRA — into product behaviour, and own security and compliance as Data Privacy Officer.
+        </div>
+      </div>
+
+      <!-- DEEP DIVE 2 — mForm -->
+      <div class="deep-dive reveal" id="w-mform" aria-label="mForm deep dive">
+        <div class="deep-dive-header">
+          <div class="deep-dive-world-label">World 02</div>
+          <div class="deep-dive-title">mForm</div>
+          <div class="deep-dive-sub">Field data, offline-first.</div>
+        </div>
+        <div class="deep-dive-products">
+
+          <div class="product-block">
+            <div class="product-name">mForm (live platform)</div>
+            <p class="product-desc">The production platform serving 1 Lakh+ field users across 30+ organisations, built for low- and no-connectivity environments.</p>
+          </div>
+
+          <div class="product-block">
+            <div class="product-name">The rebuild (in progress)</div>
+            <p class="product-desc">Leading a ground-up rebuild on a modern Frappe stack — owning product direction for migrating an established client base onto the new platform. Designed the migration methodology end to end.<!-- MFORM_V3_NAME: swap "the new platform" for the product name once finalised --></p>
+          </div>
+
+        </div>
+        <div class="stat-band">
+          Built the migration methodology end to end — a 10-phase delivery pipeline from discovery to hypercare, an enablement toolkit, and a Frappe Helpdesk–based internal hub that coordinates every migration project.
+        </div>
+      </div>
+
+      <!-- DEEP DIVE 3 — Frappe / open-source -->
+      <div class="deep-dive reveal" id="w-frappe" aria-label="Frappe open-source deep dive">
+        <div class="deep-dive-header">
+          <div class="deep-dive-world-label">World 03</div>
+          <div class="deep-dive-title">Frappe · open-source</div>
+          <div class="deep-dive-sub">Across the stack, in the open.</div>
+        </div>
+        <div class="deep-dive-products">
+
+          <div class="product-block">
+            <div class="product-name">Frappe Mobile (open source)</div>
+            <p class="product-desc">Product manager for an open-source Flutter-on-Frappe mobile platform: a client SDK (metadata-driven dynamic forms, offline-first SQLite sync) and a server app (mobile auth, OTP, force-update). Built so field apps work offline by default.</p>
+          </div>
+
+          <div class="product-block">
+            <div class="product-name">Frappe Helpdesk ticketing</div>
+            <p class="product-desc">Designing and building a Helpdesk-based ticketing and knowledge hub to run a multi-project delivery portfolio.</p>
+          </div>
+
+          <div class="product-block">
+            <div class="product-name">Internal delivery toolkit</div>
+            <p class="product-desc">Built a Claude Code plugin that encodes the whole Frappe build methodology — skills, agents, and safety guardrails — so the team ships consistently.</p>
+          </div>
+
+        </div>
+        <div class="stat-band">
+          I read and review across the stack — data models, the security layer, the framework itself — not just configuration.
+        </div>
+      </div>
+
+      <!-- DEEP DIVE 4 — AI-assisted building -->
+      <div class="deep-dive reveal" id="w-ai" aria-label="AI-assisted building deep dive">
+        <div class="deep-dive-header">
+          <div class="deep-dive-world-label">World 04</div>
+          <div class="deep-dive-title">AI-assisted building</div>
+          <div class="deep-dive-sub">Rebuilt how delivery works.</div>
+        </div>
+        <div class="deep-dive-products">
+
+          <div class="product-block">
+            <div class="product-name">Builder Protocol</div>
+            <p class="product-desc">A three-role, eight-phase AI-assisted delivery model — the Architect defines and decides, an AI tool builds, a human reviews before ship. It replaced a six-specialist SDLC and runs live across 5+ client builds. A memory layer keeps context, security rules, and decisions persistent across sessions.</p>
+          </div>
+
+          <div class="product-block">
+            <div class="product-name">Proddy</div>
+            <p class="product-desc">A personal AI agent for product work — triage, minutes, specs, follow-ups. <a href="https://github.com/Goofbol/proddy" target="_blank" rel="noopener noreferrer">github.com/Goofbol/proddy</a></p>
+          </div>
+
+          <div class="product-block">
+            <div class="product-name">AI-enablement program</div>
+            <p class="product-desc">Founded and ran an internal program teaching domain experts — not engineers — to ship real products with agentic tools, from vibe-coding to CLI, hooks, agent skills, and MCP.</p>
+          </div>
+
+        </div>
+        <div class="stat-band">
+          5+ client builds running live on the Builder Protocol model. The Architect role is a product call, not a technical one: deciding what gets built, what does not, and why.
+        </div>
+      </div>
+
+    </section>
+
+    <!-- DIVIDER MOTIF -->
+    <svg class="divider-motif reveal" width="160" height="18" viewBox="0 0 160 18" aria-hidden="true">
+      <line x1="0" y1="9" x2="100" y2="9"/>
+      <path d="M100 9 C112 9, 120 17, 132 17"/>
+      <circle cx="136" cy="17" r="2.5"/>
+    </svg>
+
+    <!-- EXPERIENCE + AT A GLANCE -->
+    <section id="experience" aria-label="Experience and skills" style="position: relative;">
+
+      <div class="bp-annotation bp-ann-exp" aria-hidden="true">
+        <svg class="bp-connector" width="24" height="30" viewBox="0 0 24 30" fill="none">
+          <line x1="0" y1="15" x2="20" y2="15" stroke="#D4842A" stroke-width="0.8" stroke-dasharray="3 2"/>
+          <circle cx="22" cy="15" r="2" fill="#D4842A"/>
+        </svg>
+        <div class="bp-note">Timeline reads newest-first. Reviewer scans the most recent role and decides whether to keep going. Do not make them scroll to find the current job.</div>
+      </div>
+
+      <div class="section-label">Experience</div>
+
+      <div class="exp-list">
+
+        <div class="exp-entry reveal">
+          <div class="exp-title">Product Manager</div>
+          <div class="exp-org">Rural information-systems SaaS company</div>
+          <div class="exp-date">Apr 2025 — present</div>
+        </div>
+
+        <div class="exp-entry reveal reveal-delay-1">
+          <div class="exp-title">Associate PM / Product Owner</div>
+          <div class="exp-org">Rural information-systems SaaS company</div>
+          <div class="exp-date">2023 — 2025 &nbsp;·&nbsp; 50+ sprints</div>
+          <div class="exp-note">Also: Data Privacy Officer — owns security & compliance docs, runs ISO 27001 gap analysis and quarterly check-ins across 20+ clients.</div>
+        </div>
+
+        <div class="exp-entry reveal reveal-delay-2">
+          <div class="exp-title">Analyst</div>
+          <div class="exp-org">Rural information-systems SaaS company</div>
+          <div class="exp-date">2022 — 2023</div>
+        </div>
+
+        <div class="exp-entry reveal reveal-delay-3">
+          <div class="exp-title">IT &amp; Digital Lead, Global Leadership Team</div>
+          <div class="exp-org">180 Degrees Consulting (global)</div>
+          <div class="exp-date">Jul 2022 — present</div>
+          <div class="exp-note">Leads a 6-person team (Bangalore, Helsinki, Bucharest, Karachi, Toronto, Atlanta). Supports 200+ student branches and 5,000+ members across APAC, EMEA, AMER.</div>
+        </div>
+
+        <div class="exp-entry reveal reveal-delay-4">
+          <div class="exp-title">Project Lead, e-Governance</div>
+          <div class="exp-org">Government of Punjab</div>
+          <div class="exp-date">2021 — 2022</div>
+          <div class="exp-note">Election logging system and district e-governance infrastructure. Led a 20+ intern cohort.</div>
+        </div>
+
+      </div>
+
+      <!-- AT A GLANCE BAND -->
+      <div class="glance-band reveal" style="position: relative;">
+
+        <div class="bp-annotation bp-ann-glance" aria-hidden="true">
+          <svg class="bp-connector" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <line x1="0" y1="12" x2="20" y2="12" stroke="#D4842A" stroke-width="0.8" stroke-dasharray="3 2"/>
+            <circle cx="22" cy="12" r="2" fill="#D4842A"/>
+          </svg>
+          <div class="bp-note">Chips instead of a prose list: scannable at the speed of a recruiter's second pass. Grouped by type so the reader calibrates depth without reading every word.</div>
+        </div>
+
+        <div class="glance-grid">
+
+          <div>
+            <div class="glance-group-label">Product</div>
+            <div class="chip-wrap">
+              <span class="skill-chip">requirements &amp; specs</span>
+              <span class="skill-chip">stakeholder discovery</span>
+              <span class="skill-chip">edge-case analysis</span>
+              <span class="skill-chip">acceptance criteria</span>
+              <span class="skill-chip">roadmapping</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="glance-group-label">Technical</div>
+            <div class="chip-wrap">
+              <span class="skill-chip">Python · JavaScript · SQL</span>
+              <span class="skill-chip">data-model design</span>
+              <span class="skill-chip">data security</span>
+              <span class="skill-chip">Frappe / ERPNext</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="glance-group-label">Tools</div>
+            <div class="chip-wrap">
+              <span class="skill-chip">Jira</span>
+              <span class="skill-chip">Linear</span>
+              <span class="skill-chip">Notion</span>
+              <span class="skill-chip">Miro</span>
+              <span class="skill-chip">Power BI</span>
+              <span class="skill-chip">Looker</span>
+              <span class="skill-chip">Tableau</span>
+              <span class="skill-chip">Superset</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="glance-group-label">Education</div>
+            <div>
+              <div class="edu-line">B.Com (Hons), Delhi University &nbsp;·&nbsp; 8.9 CGPA</div>
+              <div class="edu-note">Commerce base, self-taught into product and engineering. Goa State Topper, AISSCE.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- DIVIDER MOTIF -->
+    <svg class="divider-motif reveal" width="160" height="18" viewBox="0 0 160 18" aria-hidden="true">
+      <line x1="0" y1="9" x2="100" y2="9"/>
+      <path d="M100 9 C112 9, 120 17, 132 17"/>
+      <circle cx="136" cy="17" r="2.5"/>
+    </svg>
+
+    <!-- HOW I BUILD — new section -->
+    <section id="how-i-build" aria-label="How I build" style="position: relative;">
+
+      <div class="bp-annotation bp-ann-build" aria-hidden="true">
+        <svg class="bp-connector" width="24" height="30" viewBox="0 0 24 30" fill="none">
+          <line x1="0" y1="15" x2="20" y2="15" stroke="#D4842A" stroke-width="0.8" stroke-dasharray="3 2"/>
+          <circle cx="22" cy="15" r="2" fill="#D4842A"/>
+        </svg>
+        <div class="bp-note">Methods, not adjectives. "Builder" is a claim you prove with how you work, not a word you put in a headline. Each line below is a decision made before the first ticket is written.</div>
+      </div>
+
+      <div class="section-label">How I Build</div>
+
+      <div class="build-grid">
+
+        <div class="build-item reveal">
+          <div class="build-verb">Interview first.</div>
+          <div class="build-detail">Never take a request at face value — dig to real intent before building. The right spec answers the right question.</div>
+        </div>
+
+        <div class="build-item reveal reveal-delay-1">
+          <div class="build-verb">Write specs engineers build from.</div>
+          <div class="build-detail">Config-vs-code decided up front. Every item resolves to a fixture, a signature, or a runbook — never prose that leaves room to guess.</div>
+        </div>
+
+        <div class="build-item reveal reveal-delay-2">
+          <div class="build-verb">Map edge cases before the build.</div>
+          <div class="build-detail">Not after. The edge case that slips into production is the one nobody asked about in the spec.</div>
+        </div>
+
+        <div class="build-item reveal reveal-delay-3">
+          <div class="build-verb">QA with evidence.</div>
+          <div class="build-detail">A repeatable test method and client-facing UAT packs that carry regression coverage forward every release.</div>
+        </div>
+
+        <div class="build-item reveal">
+          <div class="build-verb">Prioritise by demand.</div>
+          <div class="build-detail">P0–P3 by who's actually asking, not by effort. Effort is a cost. Demand is the reason.</div>
+        </div>
+
+        <div class="build-item reveal reveal-delay-1">
+          <div class="build-verb">Migrate with discipline.</div>
+          <div class="build-detail">Schema analysis → field mapping → validation → staged execution with review gates. No surprises in production.</div>
+        </div>
+
+        <div class="build-item reveal reveal-delay-2" style="grid-column: 1 / -1; border-bottom: none;">
+          <div class="build-verb">Own security.</div>
+          <div class="build-detail">ISO 27001 gap analysis, Statement of Applicability approver, quarterly compliance reviews. Security is product work — not a checklist handed to a different team after the fact.</div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- DIVIDER MOTIF -->
+    <svg class="divider-motif reveal" width="160" height="18" viewBox="0 0 160 18" aria-hidden="true">
+      <line x1="0" y1="9" x2="100" y2="9"/>
+      <path d="M100 9 C112 9, 120 17, 132 17"/>
+      <circle cx="136" cy="17" r="2.5"/>
+    </svg>
+
+    <!-- HOW I THINK -->
+    <section id="how-i-think" aria-label="How I think" style="position: relative;">
+
+      <div class="bp-annotation bp-ann-think" aria-hidden="true">
+        <svg class="bp-connector" width="24" height="30" viewBox="0 0 24 30" fill="none">
+          <line x1="0" y1="15" x2="20" y2="15" stroke="#D4842A" stroke-width="0.8" stroke-dasharray="3 2"/>
+          <circle cx="22" cy="15" r="2" fill="#D4842A"/>
+        </svg>
+        <div class="bp-note">Placed after the work. Earn credibility with shipped scale, then show the operating system behind it. Reasoning, stated quietly — not performed.</div>
+      </div>
+
+      <div class="section-label">How I Think</div>
+      <ul class="thinking-list">
+        <li class="reveal">I start from first principles. If the reasoning does not hold from the ground up, the conclusion does not hold.</li>
+        <li class="reveal reveal-delay-1">I change my mind when the evidence does. Not on every signal — on the pattern.</li>
+        <li class="reveal reveal-delay-2">I look for what the data is missing. Survivorship is a bias in how I read outcomes, not just how others do.</li>
+        <li class="reveal reveal-delay-3">I watch for coordination failures — situations where everyone does the individually rational thing and the group outcome is bad. A lot of product problems are that, not execution problems.</li>
+      </ul>
+    </section>
+
+    <!-- SHELF (STUB) -->
+    <section id="shelf" aria-label="Shelf" style="position: relative;">
+
+      <div class="bp-annotation bp-ann-shelf" aria-hidden="true">
+        <svg class="bp-connector" width="24" height="20" viewBox="0 0 24 20" fill="none">
+          <line x1="0" y1="10" x2="20" y2="10" stroke="#D4842A" stroke-width="0.8" stroke-dasharray="3 2"/>
+          <circle cx="22" cy="10" r="2" fill="#D4842A"/>
+        </svg>
+        <div class="bp-note">A clean stub beats a half-built shelf. The section exists so the nav link lands somewhere real. It earns its space when it is ready.</div>
+      </div>
+
+      <div class="section-label">Shelf</div>
+      <div class="shelf-stub reveal">
+        A borrow-a-book shelf — books worth passing on. <span>Coming next.</span>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" aria-label="Contact" style="position: relative;">
+
+      <div class="bp-annotation bp-ann-contact" aria-hidden="true">
+        <svg class="bp-connector" width="24" height="20" viewBox="0 0 24 20" fill="none">
+          <line x1="0" y1="10" x2="20" y2="10" stroke="#D4842A" stroke-width="0.8" stroke-dasharray="3 2"/>
+          <circle cx="22" cy="10" r="2" fill="#D4842A"/>
+        </svg>
+        <div class="bp-note">Emails assembled at runtime, never in the markup. Respect for the reader's inbox and mine — proof that thinking about the system extends down to the scraper.</div>
+      </div>
+
+      <div class="section-label">Contact</div>
+      <div class="contact-wrap reveal">
+        <button
+          class="contact-btn"
+          id="contact-btn"
+          aria-expanded="false"
+          aria-controls="contact-reveal"
+        >Get in touch</button>
+
+        <div class="contact-reveal" id="contact-reveal" role="region" aria-label="Contact details">
+          <div class="contact-links" id="contact-links">
+            <!-- Populated by JS at reveal time — no emails in markup -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-copy">© 2026 Nihaan Mohammed</span>
+    <span class="footer-copy" style="font-size: 0.57rem; opacity: 0.5;">Built with intention.</span>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    /* -----------------------------------------------
+       BLUEPRINT TOGGLE
+       ----------------------------------------------- */
+    const toggle = document.getElementById('bp-toggle');
+    const body   = document.body;
+
+    toggle.addEventListener('click', () => {
+      const isOn = toggle.getAttribute('aria-checked') === 'true';
+      const next = !isOn;
+      toggle.setAttribute('aria-checked', String(next));
+      body.classList.toggle('blueprint', next);
+    });
+
+
+    /* -----------------------------------------------
+       SCROLL REVEAL — IntersectionObserver
+       ----------------------------------------------- */
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealEls.forEach(el => observer.observe(el));
+
+
+    /* -----------------------------------------------
+       CONTACT REVEAL
+       Emails assembled from fragments — never in markup.
+       ----------------------------------------------- */
+    const contactBtn    = document.getElementById('contact-btn');
+    const contactReveal = document.getElementById('contact-reveal');
+    const contactLinks  = document.getElementById('contact-links');
+    let   revealed      = false;
+
+    contactBtn.addEventListener('click', () => {
+      if (revealed) return; // reveal once — intentional
+
+      revealed = true;
+      contactBtn.setAttribute('aria-expanded', 'true');
+
+      const personal  = ['nihaanmohammed33', '@', 'gmail', '.', 'com'].join('');
+      const work      = ['nihaan.mohammed', '@', 'outlook', '.', 'com'].join('');
+      const linkedin  = 'https://linkedin.com/in/nihaan-mohammed';
+      const github    = 'https://github.com/Goofbol';
+
+      const rows = [
+        { label: 'Personal',     value: personal,          href: 'mailto:' + personal },
+        { label: 'Professional', value: work,               href: 'mailto:' + work     },
+        { label: 'LinkedIn',     value: 'nihaan-mohammed',  href: linkedin             },
+        { label: 'GitHub',       value: 'Goofbol',          href: github               },
+      ];
+
+      contactLinks.innerHTML = rows.map(r => `
+        <div class="contact-row">
+          <span class="contact-label">${r.label}</span>
+          <span class="contact-value">
+            <a href="${r.href}" target="_blank" rel="noopener noreferrer">${r.value}</a>
+          </span>
+        </div>
+      `).join('');
+
+      contactReveal.classList.add('visible');
+    });
+  </script>
+</body>
+</html>

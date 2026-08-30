@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nihaan Mohammed: The Route (wireframe)</title>
+<meta name="description" content="Design-reference wireframe: the Route concept for the portfolio revamp." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+  /* =============================================
+     TOKENS — LIGHT (EDITORIAL / CREAM) DEFAULT
+     ============================================= */
+  :root {
+    --cream:        #FDFCFA;
+    --surface:      #F2EDE7;
+    --surface-2:    #EDE6DD;
+    --maroon:       #8B1A1A;
+    --amber:        #D4842A;
+    --amber-dim:    rgba(212, 132, 42, 0.15);
+    --text:         #2C2C2C;
+    --text-muted:   #6B6560;
+    --border:       #E4DDD6;
+
+    --font-serif:   'Fraunces', Georgia, serif;
+    --font-sans:    'Space Grotesk', sans-serif;
+    --font-mono:    'JetBrains Mono', monospace;
+
+    --max-w:        820px;
+    --pad:          clamp(1.5rem, 5vw, 3rem);
+    --rail-w:       56px;
+
+    --transition:   300ms ease;
+    --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background var(--transition), color var(--transition);
+    overflow-x: hidden;
+  }
+
+  a { color: var(--amber); text-decoration: none; transition: color var(--transition); }
+  :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+
+  /* =============================================
+     BLUEPRINT (DARK SCHEMATIC) MODE
+     ============================================= */
+  body.blueprint {
+    --cream:       #14100c;
+    --surface:     #1e1812;
+    --surface-2:   #231d16;
+    --maroon:      #D4842A;
+    --amber:       #D4842A;
+    --amber-dim:   rgba(212, 132, 42, 0.12);
+    --text:        #F2EDE7;
+    --text-muted:  #B0A89E;
+    --border:      rgba(212, 132, 42, 0.25);
+
+    background-color: #14100c;
+    background-image:
+      linear-gradient(rgba(212, 132, 42, 0.10) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212, 132, 42, 0.10) 1px, transparent 1px),
+      linear-gradient(rgba(212, 132, 42, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212, 132, 42, 0.04) 1px, transparent 1px);
+    background-size: 140px 140px, 140px 140px, 28px 28px, 28px 28px;
+    color: #F2EDE7;
+  }
+
+  body.blueprint .topbar { background: rgba(20, 16, 12, 0.94); border-bottom-color: rgba(212, 132, 42, 0.25); }
+  body.blueprint .card { background: rgba(30, 24, 18, 0.85); border-color: rgba(212, 132, 42, 0.22); }
+  body.blueprint .card:hover { border-color: rgba(212, 132, 42, 0.55); }
+  body.blueprint .section-label { border-bottom-color: rgba(212, 132, 42, 0.22); }
+  body.blueprint .skel { border-color: rgba(212, 132, 42, 0.3); }
+  body.blueprint .chip { background: rgba(212, 132, 42, 0.1); border-color: rgba(212, 132, 42, 0.28); color: #B0A89E; }
+  body.blueprint .chip.placeholder { color: var(--amber); }
+  body.blueprint #bp-toggle { background: rgba(212, 132, 42, 0.15); border-color: rgba(212, 132, 42, 0.4); color: #D4842A; }
+  body.blueprint #bp-toggle[aria-checked="true"] { background: #D4842A; color: #14100c; border-color: #D4842A; }
+  body.blueprint footer { border-top-color: rgba(212, 132, 42, 0.18); }
+  body.blueprint .nav-link { color: #B0A89E; }
+  body.blueprint .nav-link:hover { color: #D4842A; }
+  body.blueprint .rail-line { background: rgba(212, 132, 42, 0.35); }
+  body.blueprint .mark-block { border-color: rgba(212, 132, 42, 0.22); background: rgba(30,24,18,0.6); }
+
+  /* Blueprint-only annotation notes: hidden by default, revealed in dark mode */
+  .ann { display: none; }
+  body.blueprint .ann {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    line-height: 1.6;
+    color: var(--amber);
+    background: rgba(212, 132, 42, 0.08);
+    border: 1px dashed rgba(212, 132, 42, 0.5);
+    border-radius: 3px;
+    padding: 0.7rem 0.9rem;
+    margin-top: 1rem;
+    max-width: 62ch;
+    letter-spacing: 0.01em;
+  }
+  .ann::before {
+    content: 'BLUEPRINT NOTE · ';
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+  }
+
+  /* =============================================
+     LAYOUT
+     ============================================= */
+  .page {
+    padding-left: var(--rail-w);
+  }
+  @media (max-width: 780px) { .page { padding-left: 0; } }
+
+  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--pad); }
+
+  /* =============================================
+     TOPBAR
+     ============================================= */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(253, 252, 250, 0.93);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 var(--pad);
+    padding-left: calc(var(--rail-w) + var(--pad));
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    transition: background var(--transition), border-color var(--transition);
+  }
+  @media (max-width: 780px) { .topbar { padding-left: var(--pad); } }
+
+  .wordmark {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    transition: color var(--transition);
+  }
+  .wordmark svg { width: 22px; height: 22px; flex-shrink: 0; }
+  .wordmark .dot { color: var(--amber); }
+
+  .topbar-nav { display: flex; align-items: center; gap: clamp(0.9rem, 2.5vw, 1.6rem); margin-left: auto; }
+  .nav-link { font-family: var(--font-sans); font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.02em; white-space: nowrap; transition: color var(--transition); }
+  .nav-link:hover { color: var(--text); }
+  @media (max-width: 760px) { .topbar-nav { display: none; } }
+
+  #bp-toggle {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.28rem 0.6rem;
+    cursor: pointer;
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
+    white-space: nowrap;
+  }
+  #bp-toggle[aria-checked="true"] { background: var(--amber); color: #fff; border-color: var(--amber); }
+  #bp-toggle::after {
+    content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%;
+    background: currentColor; margin-left: 0.4rem; opacity: 0.5; vertical-align: middle;
+  }
+  #bp-toggle[aria-checked="true"]::after { opacity: 1; }
+
+  /* =============================================
+     ROUTE-RAIL — fixed vertical nav
+     ============================================= */
+  .route-rail {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--rail-w);
+    height: 100vh;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (max-width: 780px) { .route-rail { display: none; } }
+
+  .rail-line {
+    position: absolute;
+    left: calc(var(--rail-w) / 2 - 1px);
+    top: 4vh;
+    bottom: 4vh;
+    width: 2px;
+    background: rgba(212, 132, 42, 0.35);
+    border-radius: 2px;
+  }
+
+  .rail-points {
+    position: relative;
+    height: 92vh;
+    width: 100%;
+  }
+
+  .rail-point {
+    position: absolute;
+    left: calc(var(--rail-w) / 2);
+    transform: translate(-50%, -50%);
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .rail-point .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 2px solid var(--amber);
+    transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .rail-point:hover .dot,
+  .rail-point:focus-visible .dot {
+    transform: scale(1.35);
+  }
+
+  .rail-point.active .dot {
+    background: var(--amber);
+    box-shadow: 0 0 0 4px var(--amber-dim);
+  }
+
+  .rail-label {
+    position: absolute;
+    left: 32px;
+    top: 50%;
+    transform: translateY(-50%) translateX(-6px);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text);
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.3rem 0.55rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 160ms ease, transform 160ms ease;
+  }
+
+  .rail-point:hover .rail-label,
+  .rail-point:focus-visible .rail-label {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  /* =============================================
+     MAIN / REVEAL
+     ============================================= */
+  main { padding: clamp(3rem, 8vw, 5rem) 0; }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* =============================================
+     HERO
+     ============================================= */
+  .hero { padding: clamp(2rem, 6vw, 3.5rem) 0 clamp(2.5rem, 6vw, 4rem); }
+  .hero-tag { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.4rem; }
+  .hero-plane { width: 44px; height: 44px; margin-bottom: 1.6rem; color: var(--maroon); }
+  body.blueprint .hero-plane { color: var(--text); }
+  .hero-headline {
+    font-family: var(--font-serif); font-size: clamp(2rem, 5.5vw, 3.25rem); font-weight: 400;
+    line-height: 1.1; color: var(--maroon); letter-spacing: -0.02em; margin-bottom: 1.5rem; max-width: 680px;
+    transition: color var(--transition);
+  }
+  body.blueprint .hero-headline { color: var(--text); }
+  .hero-sub { font-size: 1.05rem; line-height: 1.75; max-width: 580px; font-weight: 300; }
+  .hero-location { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.1em; margin-top: 1.8rem; }
+
+  /* =============================================
+     SECTION HEADERS
+     ============================================= */
+  .section-label {
+    font-family: var(--font-mono); font-size: 0.63rem; color: var(--text-muted); letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 1.75rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border);
+  }
+  section { margin-bottom: clamp(3.5rem, 9vw, 6rem); position: relative; }
+
+  /* =============================================
+     THE ROUTE — the centerpiece timeline
+     ============================================= */
+  .route-section { position: relative; }
+
+  .route-intro { max-width: 620px; margin-bottom: clamp(2.5rem, 6vw, 4rem); }
+  .route-intro h2 { font-family: var(--font-serif); font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 400; color: var(--maroon); margin-bottom: 0.9rem; }
+  body.blueprint .route-intro h2 { color: var(--text); }
+  .route-intro p { font-size: 1rem; color: var(--text-muted); line-height: 1.7; }
+
+  .route-track {
+    position: relative;
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    column-gap: clamp(1rem, 3vw, 2.2rem);
+  }
+
+  .route-svg-col {
+    position: relative;
+    grid-column: 1;
+  }
+  .route-svg-col svg {
+    position: sticky;
+    top: 0;
+    width: 64px;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .route-path-wrap { grid-column: 1; position: relative; }
+
+  #routePath {
+    fill: none;
+    stroke: var(--maroon);
+    stroke-width: 3;
+    stroke-linecap: round;
+    transition: stroke var(--transition);
+  }
+  body.blueprint #routePath { stroke: var(--amber); }
+
+  .route-chapters { grid-column: 2; display: flex; flex-direction: column; gap: clamp(3rem, 8vw, 5.5rem); }
+
+  .chapter {
+    position: relative;
+    min-height: 1px;
+  }
+
+  .chapter-era {
+    font-family: var(--font-mono); font-size: 0.66rem; color: var(--amber); letter-spacing: 0.16em;
+    text-transform: uppercase; margin-bottom: 0.7rem; display: flex; align-items: center; gap: 0.6rem;
+  }
+  .chapter-era .sector { color: var(--text-muted); font-weight: 300; }
+
+  .chapter-title {
+    font-family: var(--font-serif); font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 500;
+    color: var(--maroon); letter-spacing: -0.01em; margin-bottom: 0.8rem; line-height: 1.2;
+    transition: color var(--transition);
+  }
+  body.blueprint .chapter-title { color: var(--text); }
+
+  .chapter-body { font-size: 0.98rem; line-height: 1.75; max-width: 58ch; margin-bottom: 1.1rem; }
+  .chapter-body p { margin-bottom: 0.6rem; }
+
+  .chapter-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.6rem; }
+  .chip {
+    font-family: var(--font-mono); font-size: 0.66rem; color: var(--text-muted); background: var(--surface);
+    border: 1px solid var(--border); border-radius: 3px; padding: 0.3rem 0.6rem; letter-spacing: 0.02em; white-space: nowrap;
+  }
+  .chip.stat { color: var(--maroon); border-color: rgba(139,26,26,0.3); }
+  body.blueprint .chip.stat { color: var(--text); border-color: rgba(212,132,42,0.4); }
+  .chip.placeholder { color: var(--amber); border-style: dashed; border-color: var(--amber); background: var(--amber-dim); }
+
+  .chapter-footnote {
+    font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); font-style: italic;
+    margin-top: 0.7rem; opacity: 0.85;
+  }
+
+  /* texture elements — one per chapter, kept quiet */
+  .texture-coords {
+    font-family: var(--font-mono); font-size: 0.68rem; color: var(--amber); letter-spacing: 0.06em;
+    border: 1px solid var(--border); border-radius: 3px; padding: 0.3rem 0.6rem; display: inline-block; margin-bottom: 0.9rem;
+  }
+  .texture-tick-row {
+    display: flex; gap: 0.9rem; margin-top: 0.9rem; font-family: var(--font-mono); font-size: 0.62rem;
+    color: var(--text-muted); letter-spacing: 0.05em;
+  }
+  .texture-tick-row span::before { content: '▸ '; color: var(--amber); }
+
+  /* ring-ahead marker, end of route */
+  .route-end {
+    display: flex; align-items: center; gap: 1.2rem; margin-top: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  .route-end svg { width: 56px; height: 56px; color: var(--maroon); flex-shrink: 0; }
+  body.blueprint .route-end svg { color: var(--text); }
+
+  @media (max-width: 780px) {
+    .route-track { grid-template-columns: 40px 1fr; column-gap: 1rem; }
+    .route-svg-col svg { width: 40px; }
+  }
+  @media (max-width: 480px) {
+    .route-track { grid-template-columns: 26px 1fr; column-gap: 0.75rem; }
+    .route-svg-col svg { width: 26px; }
+  }
+
+  /* =============================================
+     GENERIC CARD (worlds)
+     ============================================= */
+  .cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+  @media (max-width: 780px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .cards-grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 5px;
+    padding: 1.3rem 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;
+    transition: border-color var(--transition), transform 200ms var(--ease-out);
+  }
+  .card:hover { border-color: rgba(212,132,42,0.5); transform: translateY(-2px); }
+  .card-name { font-family: var(--font-serif); font-size: 1.02rem; font-weight: 500; color: var(--maroon); transition: color var(--transition); }
+  body.blueprint .card-name { color: var(--text); }
+  .card-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; font-weight: 300; }
+
+  /* =============================================
+     CASE FILES — sub-block inside Selected Work
+     ============================================= */
+  .case-files { margin-top: clamp(2.5rem, 6vw, 3.5rem); }
+  .case-files-label {
+    font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 0.6rem;
+  }
+  .case-files-intro { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; max-width: 58ch; margin-bottom: 1.3rem; font-weight: 300; }
+
+  .case-index { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+  @media (max-width: 780px) { .case-index { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .case-index { grid-template-columns: 1fr; } }
+
+  .case-card {
+    text-align: left; width: 100%; font-family: inherit; color: inherit;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 5px;
+    padding: 1.1rem 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; cursor: pointer;
+    transition: border-color var(--transition), transform 200ms var(--ease-out);
+  }
+  .case-card:hover { border-color: rgba(212,132,42,0.5); transform: translateY(-2px); }
+  .case-card-name { font-family: var(--font-serif); font-size: 0.98rem; font-weight: 500; color: var(--maroon); }
+  body.blueprint .case-card-name { color: var(--text); }
+  .case-card-teaser { font-size: 0.76rem; color: var(--text-muted); line-height: 1.5; font-weight: 300; }
+  .case-card[aria-expanded="true"] { border-color: var(--amber); }
+
+  .case-card.ghost {
+    cursor: default; border-style: dashed; opacity: 0.7;
+  }
+  .case-card.ghost:hover { transform: none; border-color: var(--border); }
+  .case-card.ghost .case-card-name { color: var(--text-muted); }
+
+  .case-detail {
+    grid-column: 1 / -1; margin-top: 0.75rem; border: 1px solid var(--border); border-radius: 5px;
+    padding: clamp(1.2rem, 3vw, 1.7rem); background: var(--surface); display: grid;
+    grid-template-columns: repeat(2, 1fr); gap: 1.1rem 1.5rem;
+  }
+  .case-detail[hidden] { display: none; }
+  @media (max-width: 640px) { .case-detail { grid-template-columns: 1fr; } }
+  .case-part-label {
+    font-family: var(--font-mono); font-size: 0.63rem; color: var(--amber); letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 0.45rem;
+  }
+  .case-part-body { font-size: 0.86rem; line-height: 1.65; color: var(--text); }
+
+  /* =============================================
+     PERSISTING SECTION SKELETONS
+     ============================================= */
+  .skel {
+    border: 1px dashed var(--border); border-radius: 5px; padding: 1.4rem 1.5rem;
+    transition: border-color var(--transition);
+  }
+  .skel-tag {
+    font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--amber); background: var(--amber-dim); border-radius: 2px; padding: 0.15rem 0.5rem;
+    display: inline-block; margin-bottom: 0.8rem;
+  }
+  .skel-desc { font-size: 0.88rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; }
+
+  /* =============================================
+     THE MARK — brand block
+     ============================================= */
+  .mark-block {
+    display: grid; grid-template-columns: 96px 1fr; gap: clamp(1.2rem, 4vw, 2rem); align-items: start;
+    border: 1px solid var(--border); border-radius: 8px; padding: clamp(1.5rem, 4vw, 2.2rem);
+    background: var(--surface);
+  }
+  @media (max-width: 560px) { .mark-block { grid-template-columns: 1fr; } }
+  .mark-block svg { width: 96px; height: 96px; }
+  .mark-block h2 { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 500; color: var(--maroon); margin-bottom: 0.8rem; }
+  body.blueprint .mark-block h2 { color: var(--text); }
+  .mark-block p { font-size: 0.92rem; color: var(--text); line-height: 1.75; max-width: 62ch; }
+  .mark-block p strong { color: var(--amber); font-weight: 500; }
+
+  /* =============================================
+     FOOTER
+     ============================================= */
+  footer {
+    padding: 2rem var(--pad); border-top: 1px solid var(--border); max-width: var(--max-w); margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+  }
+  footer svg { width: 24px; height: 24px; color: var(--maroon); }
+  body.blueprint footer svg { color: var(--text); }
+  .footer-copy { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.06em; }
+</style>
+</head>
+<body>
+
+<!-- Shared SVG defs — plane mark reused verbatim from brand/identity.html -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="plane">
+      <line x1="48" y1="13" x2="48" y2="64" stroke-width="5.5" stroke-linecap="round" />
+      <polyline points="20,46 48,32 76,46" fill="none" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+      <polyline points="37,68 48,62 59,68" fill="none" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <g id="hits">
+      <circle cx="27" cy="42.5" r="2.4" /><circle cx="35" cy="38.5" r="2.4" />
+      <circle cx="61" cy="38.5" r="2.4" /><circle cx="69" cy="42.5" r="2.4" />
+      <circle cx="43" cy="64.7" r="2.4" /><circle cx="53" cy="64.7" r="2.4" />
+      <circle cx="48" cy="52" r="2.4" />
+    </g>
+    <g id="ring">
+      <circle cx="48" cy="20" r="8" fill="none" stroke-width="1.6" stroke-dasharray="3 3.2" opacity="0.85" />
+    </g>
+    <g id="reg" fill="none" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="33,86 33,74 43,86 43,74" />
+      <polyline points="49,86 49,74 56,81 63,74 63,86" />
+    </g>
+    <g id="tile">
+      <rect x="2" y="2" width="92" height="92" rx="18" fill="#8B1A1A" />
+      <use href="#plane" stroke="#FDFCFA" />
+      <use href="#hits" fill="#D4842A" />
+      <use href="#ring" stroke="#FDFCFA" />
+      <use href="#reg" stroke="#FDFCFA" />
+    </g>
+    <g id="monogram">
+      <rect x="2" y="2" width="92" height="92" rx="18" fill="#8B1A1A" />
+      <polyline points="26,68 26,28 46,68 46,28 58,50 70,28 70,68" fill="none" stroke="#FDFCFA" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="58" cy="50" r="2.6" fill="#D4842A" />
+    </g>
+  </defs>
+</svg>
+
+<!-- ROUTE-RAIL -->
+<nav class="route-rail" aria-label="Route rail: jump to a section">
+  <div class="rail-line" aria-hidden="true"></div>
+  <div class="rail-points" id="railPoints"></div>
+</nav>
+
+<div class="page">
+
+  <!-- TOPBAR -->
+  <header class="topbar" role="banner">
+    <div class="wordmark">
+      <svg viewBox="0 0 96 96" aria-hidden="true"><use href="#plane" stroke="currentColor" /><use href="#hits" fill="#D4842A" /><use href="#ring" stroke="currentColor" /><use href="#reg" stroke="currentColor" /></svg>
+      Nihaan Mohammed<span class="dot">.</span>
+    </div>
+
+    <nav class="topbar-nav" aria-label="Page sections">
+      <a href="#route" class="nav-link">The Route</a>
+      <a href="#work" class="nav-link">Work</a>
+      <a href="#experience" class="nav-link">Experience</a>
+      <a href="#shelf" class="nav-link">Shelf</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <button id="bp-toggle" role="switch" aria-checked="false" aria-label="Blueprint mode: reveal design annotations">Blueprint</button>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- HERO -->
+      <section class="hero" aria-label="Introduction">
+        <svg class="hero-plane" viewBox="0 0 96 96" aria-hidden="true"><use href="#plane" stroke="currentColor" /><use href="#hits" fill="#D4842A" /><use href="#ring" stroke="currentColor" /><use href="#reg" stroke="currentColor" /></svg>
+        <div class="hero-tag reveal">Product Manager</div>
+        <h1 class="hero-headline reveal">I design the system.<br>Engineers build from my specs.</h1>
+        <p class="hero-sub reveal">Four years building data-heavy grants and field-data software, from stakeholder requirements to shipped features at scale. I read the data model, review the security layer, own the compliance call, and write specs engineers build from directly.</p>
+        <div class="hero-location reveal">Tech for good &nbsp;·&nbsp; New Delhi</div>
+        <div class="ann">This headline stays exactly as it runs live. The Route below is new: it earns the "how did you get the standing to make that claim" question before Selected Work answers "what did you build."</div>
+      </section>
+
+      <!-- THE ROUTE -->
+      <section id="route" class="route-section" aria-label="The Route: a life timeline">
+        <div class="section-label">The Route</div>
+
+        <div class="route-intro reveal">
+          <h2>One line, five chapters.</h2>
+          <p>A ship's track becomes a walked line becomes a flight path. Same pen, different terrain: read top to bottom, the way it happened.</p>
+          <div class="ann">Signature element of the revamp. The stroke redraws on scroll (stroke-dashoffset, one continuous path) so the reader watches the line arrive rather than finding it already there. prefers-reduced-motion shows the full path immediately, no animation withheld.</div>
+        </div>
+
+        <div class="route-track">
+          <div class="route-svg-col" aria-hidden="true">
+            <svg viewBox="0 0 64 2200" preserveAspectRatio="none">
+              <!-- chart ticks, sea chapter -->
+              <g stroke="var(--text-muted)" stroke-width="0.6" opacity="0.35">
+                <line x1="14" y1="40" x2="22" y2="40" />
+                <line x1="14" y1="90" x2="22" y2="90" />
+                <line x1="14" y1="140" x2="22" y2="140" />
+              </g>
+              <circle cx="32" cy="70" r="2.5" fill="var(--amber)" opacity="0.55" />
+              <circle cx="32" cy="150" r="2" fill="var(--amber)" opacity="0.4" />
+              <path id="routePath" d="M 32 20
+                L 32 100
+                Q 32 160 32 210
+                L 32 460
+                L 32 900
+                L 32 1400
+                L 32 1750
+                L 32 1980
+                L 32 2140" />
+              <!-- empty ring ahead of the plane, end of path -->
+              <circle cx="32" cy="2185" r="9" fill="none" stroke="var(--maroon)" stroke-width="1.4" stroke-dasharray="3 3" class="end-ring" />
+            </svg>
+          </div>
+
+          <div class="route-chapters">
+
+            <!-- CHAPTER A — THE SEA -->
+            <article class="chapter reveal">
+              <div class="chapter-era">THE SEA</div>
+              <h3 class="chapter-title">Longest anchorage: Goa</h3>
+              <div class="texture-coords">15.48°N 73.82°E · GOA</div>
+              <div class="chapter-body">
+                <p>An Indian Navy captain's kid. Growing up meant moving with the fleet: new base, new school, new coastline, on a schedule the Navy set.</p>
+                <p>Goa was the longest anchorage. Everywhere else was a posting; Goa is closest to a hometown.</p>
+              </div>
+              <div class="ann">No birth year, no father's name: clean-room rule. The dashed track texture (chart ticks, depth-sounding dots) reads "before the record starts," which is the honest framing for this chapter.</div>
+            </article>
+
+            <!-- CHAPTER B — THE PITCH -->
+            <article class="chapter reveal">
+              <div class="chapter-era">THE PITCH</div>
+              <h3 class="chapter-title">Captain and trophies</h3>
+              <div class="chapter-body">
+                <p>Navy Children School, Goa. Football was the identity before anything else was: team captain, the years measured in seasons rather than grades.</p>
+                <p>Academics kept pace: state topper in Commerce at the finish line of school.</p>
+              </div>
+              <div class="chapter-chips">
+                <span class="chip placeholder">[tournament title: Nihaan to fill]</span>
+                <span class="chip placeholder">[tournament title: Nihaan to fill]</span>
+                <span class="chip placeholder">[tournament title: Nihaan to fill]</span>
+                <span class="chip stat">Commerce State Topper, Goa · 96.5% · 2019</span>
+              </div>
+              <div class="chapter-footnote">illustrative: laurels to be filled</div>
+              <div class="ann">Three laurel chips are marked placeholders on purpose, better an honest gap than an invented tournament name. The one real stat (96.5%, 2019) is verified and sits apart from the placeholders in styling (solid border vs. dashed) so a reader can tell which is which without reading the footnote.</div>
+            </article>
+
+            <!-- CHAPTER C — DELHI · S1 -->
+            <article class="chapter reveal">
+              <div class="chapter-era">DELHI <span class="sector">· S1</span></div>
+              <h3 class="chapter-title">Building things before it was a job</h3>
+              <div class="chapter-body">
+                <p>B.Com (Hons), Sri Venkateswara College, Delhi University. 8.9 CGPA, 2019–22.</p>
+                <p>Founded the 180 Degrees Consulting branch at SVC, starting a chapter from nothing is its own product problem: recruit, structure, prove the model works before anyone trusts it with a client.</p>
+                <p>Project Lead on a Government of Punjab programme through 2021–22: an election logging system and an e-Governance build, running a 20+ intern cohort to ship it.</p>
+              </div>
+              <div class="ann">"S1" opens the Formula-1 sector-marker motif carried through the remaining chapters: a lap timed in sectors. It reads as structure with a reason: each sector is a distinct phase of building capability.</div>
+            </article>
+
+            <!-- CHAPTER D — THE BUILD · S2 -->
+            <article class="chapter reveal">
+              <div class="chapter-era">THE BUILD <span class="sector">· S2</span></div>
+              <h3 class="chapter-title">Four years, two platforms</h3>
+              <div class="chapter-body">
+                <p>Joined a tech-for-good product company in July 2022. Analyst, then Associate PM (Aug 2023), then Product Manager (Apr 2025). Same company, three different jobs: the title changed because the scope did.</p>
+                <p>Now leads two platforms end to end: the data model, the security layer, the compliance call, the specs engineers build from.</p>
+              </div>
+              <div class="chapter-chips">
+                <span class="chip stat">₹5,000 Cr+ grants governed</span>
+                <span class="chip stat">40+ donors · 1,500+ NGOs</span>
+                <span class="chip stat">1 Lakh+ offline field users</span>
+                <span class="chip stat">Data Privacy Officer</span>
+              </div>
+              <div class="texture-tick-row">
+                <span>2022</span><span>2023</span><span>2025</span>
+              </div>
+              <div class="ann">Employer intentionally unnamed: hard rule. Year ticks styled like gear-shift markers keep the F1 motif going without adding a second metaphor. Stat chips are the same verified numbers the live site uses.</div>
+            </article>
+
+            <!-- CHAPTER E — NOW · S3 -->
+            <article class="chapter reveal">
+              <div class="chapter-era">NOW <span class="sector">· S3</span></div>
+              <h3 class="chapter-title">Where the line is now</h3>
+              <div class="chapter-body">
+                <p>Product Manager of two platforms. Builds with AI agents inside the delivery loop: the agent writes, the review is still the job.</p>
+                <p>Global IT & Digital Lead at 180 Degrees Consulting, volunteer, running a six-person team spread across five time zones.</p>
+              </div>
+              <div class="route-end">
+                <svg viewBox="0 0 96 96" aria-hidden="true"><use href="#plane" stroke="currentColor" /><use href="#hits" fill="#D4842A" /><use href="#ring" stroke="currentColor" /><use href="#reg" stroke="currentColor" /></svg>
+                <div class="ann">the ring stays empty, next chapter</div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SELECTED WORK -->
+      <section id="work" aria-label="Selected work">
+        <div class="section-label">Selected Work</div>
+        <div class="cards-grid">
+          <div class="card reveal">
+            <div class="card-name">mGrant</div>
+            <div class="card-desc">Grant lifecycle software for the corporates who give and the NGOs who receive.</div>
+          </div>
+          <div class="card reveal">
+            <div class="card-name">mForm</div>
+            <div class="card-desc">Data collection engineered for the field: works offline, syncs when it can.</div>
+          </div>
+          <div class="card reveal">
+            <div class="card-name">Frappe · open-source</div>
+            <div class="card-desc">Working across the Frappe/ERPNext ecosystem, platforms and internal tooling alike.</div>
+          </div>
+          <div class="card reveal">
+            <div class="card-name">AI-assisted building</div>
+            <div class="card-desc">Rebuilding software delivery with agentic AI, and building the agents.</div>
+          </div>
+        </div>
+        <div class="ann">Placement only: four world cards persist unchanged from the live site's deep-dive structure. Not redesigned here.</div>
+
+        <div class="case-files">
+          <div class="case-files-label">Case files</div>
+          <p class="case-files-intro">Each world above opens into a case file: the situation, the call I made, what shipped, and the number that proves it.</p>
+
+          <div class="case-index">
+            <button type="button" class="case-card" id="caseBuilderProtocolBtn" aria-expanded="true" aria-controls="caseBuilderProtocol">
+              <span class="case-card-name">Builder Protocol</span>
+              <span class="case-card-teaser">A three-role AI-assisted delivery model, running across three enterprise accounts.</span>
+            </button>
+
+            <button type="button" class="case-card" id="casePunjabBtn" aria-expanded="false" aria-controls="casePunjab">
+              <span class="case-card-name">Punjab e-Governance</span>
+              <span class="case-card-teaser">Election logging and an e-Governance build for the Government of Punjab, shipped with a 20+ intern cohort, before any of it was a job.</span>
+            </button>
+
+            <div class="case-card ghost" aria-hidden="true">
+              <span class="case-card-name">Healthcare</span>
+              <span class="case-card-teaser skel-tag" style="margin-bottom:0;">in the hangar</span>
+            </div>
+
+            <div class="case-card ghost" aria-hidden="true">
+              <span class="case-card-name">Education</span>
+              <span class="case-card-teaser skel-tag" style="margin-bottom:0;">in the hangar</span>
+            </div>
+
+            <div class="case-detail" id="caseBuilderProtocol">
+              <div>
+                <div class="case-part-label">Situation</div>
+                <div class="case-part-body">Enterprise software delivery where specs, builds, and QA all queued on the same few people.</div>
+              </div>
+              <div>
+                <div class="case-part-label">The call</div>
+                <div class="case-part-body">A three-role AI-assisted delivery model: Product Builder, System Architect, Account Manager, agents inside the loop, humans owning review and sign-off.</div>
+              </div>
+              <div>
+                <div class="case-part-label">What shipped</div>
+                <div class="case-part-body">The protocol running across three enterprise accounts, from spec to verified build.</div>
+              </div>
+              <div>
+                <div class="case-part-label">Proof</div>
+                <div class="case-part-body"><span class="chip placeholder">[metric: Nihaan to fill]</span></div>
+              </div>
+            </div>
+
+            <div class="case-detail" id="casePunjab" hidden>
+              <div>
+                <div class="case-part-label">Situation</div>
+                <div class="case-part-body">A state government needing election-day logging and citizen-facing e-Governance, with student capacity to build it.</div>
+              </div>
+              <div>
+                <div class="case-part-label">The call</div>
+                <div class="case-part-body">Structure a 20+ intern cohort into shippable workstreams.</div>
+              </div>
+              <div>
+                <div class="case-part-label">What shipped</div>
+                <div class="case-part-body">The logging system and the e-Governance build, live for the 2022 cycle.</div>
+              </div>
+              <div>
+                <div class="case-part-label">Proof</div>
+                <div class="case-part-body"><span class="chip placeholder">[metric: Nihaan to fill]</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ann">Case files share one fixed four-part shape (situation, the call, what shipped, proof) so a reader can compare decisions across domains without relearning a format each time. The two ghost cards (healthcare, education) declare the roadmap honestly: queued, not built, no body copy pretending otherwise.</div>
+      </section>
+
+      <!-- PERSISTING SKELETONS -->
+      <section id="experience" aria-label="Experience">
+        <div class="section-label">Experience</div>
+        <div class="skel reveal">
+          <span class="skel-tag">persists from current site</span>
+          <div class="skel-desc">Reverse-chronological role list: current platforms first, 180DC leadership, the Punjab e-Governance lead role. Unchanged in this revamp.</div>
+        </div>
+      </section>
+
+      <section id="how-i-build" aria-label="How I build">
+        <div class="section-label">How I Build</div>
+        <div class="skel reveal">
+          <span class="skel-tag">persists from current site</span>
+          <div class="skel-desc">Seven working principles: interview first, specs engineers build from, edge cases before the build, QA with evidence, prioritise by demand, migrate with discipline, own security. Unchanged.</div>
+        </div>
+      </section>
+
+      <section id="how-i-think" aria-label="How I think">
+        <div class="section-label">How I Think</div>
+        <div class="skel reveal">
+          <span class="skel-tag">persists from current site</span>
+          <div class="skel-desc">First principles, changing my mind on the pattern not the signal, reading for what the data is missing, coordination failures. Unchanged.</div>
+        </div>
+      </section>
+
+      <section id="shelf" aria-label="Shelf">
+        <div class="section-label">Shelf</div>
+        <div class="skel reveal">
+          <span class="skel-tag">persists from current site</span>
+          <div class="skel-desc">A borrow-a-book shelf: books worth passing on. Currently a stub; unchanged in this revamp.</div>
+        </div>
+      </section>
+
+      <section id="resume" aria-label="Resume">
+        <div class="section-label">Resume</div>
+        <div class="skel reveal">
+          <span class="skel-tag">new: resume moves inside the site</span>
+          <div class="skel-desc">Resume stops being a separate download and becomes a section of the Route itself: same chapters, denser, one click to a PDF export at the top.</div>
+        </div>
+      </section>
+
+      <!-- THE MARK -->
+      <section aria-label="The Mark: brand explanation">
+        <div class="section-label">The Mark</div>
+        <div class="mark-block reveal">
+          <svg viewBox="0 0 96 96" aria-hidden="true"><use href="#tile" /></svg>
+          <div>
+            <h2>The mark is a return flight.</h2>
+            <p>In 1943, the US military mapped the bullet holes on bombers returning from Europe, wanting to armour the places hit most. The statistician <strong>Abraham Wald</strong> turned that inside out: the planes that came back survived those hits, that's why they were visible. Armour instead went where there were no holes, because planes hit there never made it home.</p>
+            <p>The mark draws that inversion directly: a top-view plane, seven amber hits on the wings and tail, and a dashed ring at the nose, drawn around nothing. <strong>The data in front of you is the data that survived</strong>: the empty ring is the whole argument.</p>
+          </div>
+        </div>
+        <div class="ann">Pulled from brand/identity.html almost verbatim, compressed to spec (3-4 sentences). The SVG groups (#plane, #hits, #ring, #reg, #tile) are reused by reference, never retyped: this file defines them once in the shared defs block at the top.</div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" aria-label="Contact">
+        <div class="section-label">Contact</div>
+        <div class="skel reveal">
+          <span class="skel-tag">persists</span>
+          <div class="skel-desc">Reveal-on-intent contact button: email addresses assembled at runtime from fragments, never present in markup. Unchanged.</div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <svg viewBox="0 0 96 96" aria-hidden="true"><use href="#tile" /></svg>
+    <span class="footer-copy">Wireframe · design reference only · not the live site</span>
+  </footer>
+
+</div>
+
+<script>
+  /* -----------------------------------------------
+     BLUEPRINT TOGGLE
+     ----------------------------------------------- */
+  const toggle = document.getElementById('bp-toggle');
+  const body   = document.body;
+  toggle.addEventListener('click', () => {
+    const next = toggle.getAttribute('aria-checked') !== 'true';
+    toggle.setAttribute('aria-checked', String(next));
+    body.classList.toggle('blueprint', next);
+  });
+
+  /* -----------------------------------------------
+     SCROLL REVEAL
+     ----------------------------------------------- */
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = document.querySelectorAll('.reveal');
+  if (reduceMotion) {
+    revealEls.forEach(el => el.classList.add('visible'));
+  } else {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+  }
+
+  /* -----------------------------------------------
+     ROUTE-RAIL — build waypoints, track scroll, click-jump
+     ----------------------------------------------- */
+  const railSections = [
+    { id: 'route',        label: 'The Route' },
+    { id: 'work',         label: 'Selected Work' },
+    { id: 'experience',   label: 'Experience' },
+    { id: 'how-i-build',  label: 'How I Build' },
+    { id: 'how-i-think',  label: 'How I Think' },
+    { id: 'shelf',        label: 'Shelf' },
+    { id: 'resume',       label: 'Resume' },
+    { id: 'contact',      label: 'Contact' },
+  ];
+
+  const railPointsEl = document.getElementById('railPoints');
+  const railButtons = [];
+
+  railSections.forEach((sec, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'rail-point';
+    btn.style.top = (railSections.length === 1 ? 50 : (i / (railSections.length - 1)) * 100) + '%';
+    btn.setAttribute('aria-label', 'Jump to ' + sec.label);
+    btn.dataset.target = sec.id;
+
+    const dot = document.createElement('span');
+    dot.className = 'dot';
+    dot.setAttribute('aria-hidden', 'true');
+
+    const label = document.createElement('span');
+    label.className = 'rail-label';
+    label.textContent = sec.label;
+    label.setAttribute('aria-hidden', 'true');
+
+    btn.appendChild(dot);
+    btn.appendChild(label);
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(sec.id);
+      if (target) target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    });
+
+    railPointsEl.appendChild(btn);
+    railButtons.push(btn);
+  });
+
+  const sectionEls = railSections.map(s => document.getElementById(s.id)).filter(Boolean);
+
+  function updateActiveWaypoint() {
+    let activeIdx = 0;
+    const scrollPos = window.scrollY + window.innerHeight * 0.3;
+    sectionEls.forEach((el, i) => {
+      if (el.offsetTop <= scrollPos) activeIdx = i;
+    });
+    railButtons.forEach((btn, i) => btn.classList.toggle('active', i === activeIdx));
+  }
+
+  window.addEventListener('scroll', updateActiveWaypoint, { passive: true });
+  window.addEventListener('resize', updateActiveWaypoint);
+  updateActiveWaypoint();
+
+  /* -----------------------------------------------
+     THE ROUTE PATH — scroll-linked draw-in
+     ----------------------------------------------- */
+  const routePath = document.getElementById('routePath');
+  if (routePath) {
+    const pathLength = routePath.getTotalLength();
+
+    if (reduceMotion) {
+      routePath.style.strokeDasharray = 'none';
+      routePath.style.strokeDashoffset = '0';
+    } else {
+      routePath.style.strokeDasharray = pathLength + ' ' + pathLength;
+      routePath.style.strokeDashoffset = pathLength;
+
+      const routeSection = document.getElementById('route');
+
+      function drawPathOnScroll() {
+        const rect = routeSection.getBoundingClientRect();
+        const total = rect.height + window.innerHeight * 0.6;
+        const scrolled = Math.min(Math.max(window.innerHeight * 0.6 - rect.top, 0), total);
+        const progress = Math.min(Math.max(scrolled / total, 0), 1);
+        routePath.style.strokeDashoffset = String(pathLength * (1 - progress));
+      }
+
+      window.addEventListener('scroll', drawPathOnScroll, { passive: true });
+      window.addEventListener('resize', drawPathOnScroll);
+      drawPathOnScroll();
+    }
+  }
+
+  /* -----------------------------------------------
+     CASE FILES — expand/collapse toggle
+     ----------------------------------------------- */
+  const caseToggles = [
+    { btn: 'caseBuilderProtocolBtn', panel: 'caseBuilderProtocol' },
+    { btn: 'casePunjabBtn', panel: 'casePunjab' },
+  ];
+
+  caseToggles.forEach(pair => {
+    const btn = document.getElementById(pair.btn);
+    const panel = document.getElementById(pair.panel);
+    if (!btn || !panel) return;
+    btn.addEventListener('click', () => {
+      const next = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', String(next));
+      panel.hidden = !next;
+    });
+  });
+</script>
+
+</body>
+</html>

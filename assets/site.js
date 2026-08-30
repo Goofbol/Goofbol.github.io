@@ -159,6 +159,7 @@
     R: 'route.html',
     W: 'work.html',
     A: 'about.html',
+    L: 'library.html',
     E: 'resume.html'
   };
 
