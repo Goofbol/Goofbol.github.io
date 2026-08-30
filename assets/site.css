@@ -576,18 +576,14 @@ body.blueprint .route-end svg { color: var(--text); }
 /* =============================================
    HOW I BUILD
    ============================================= */
-.build-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; }
+.build-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0.85rem; }
 @media (max-width: 640px) { .build-grid { grid-template-columns: minmax(0, 1fr); } }
-.build-item { padding: 1.05rem 0; border-bottom: 1px solid var(--border); }
-.build-item:nth-child(odd) { padding-right: 1.5rem; }
-.build-item:nth-child(even) { padding-left: 1.5rem; border-left: 1px solid var(--border); }
-.build-item:nth-last-child(-n+2) { border-bottom: none; }
-@media (max-width: 640px) {
-  .build-item:nth-child(odd) { padding-right: 0; }
-  .build-item:nth-child(even) { padding-left: 0; border-left: none; }
-  .build-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
-  .build-item:last-child { border-bottom: none; }
+.build-item {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  padding: 1.05rem 1.2rem 1.15rem; transition: border-color var(--transition);
 }
+@media (hover: hover) { .build-item:hover { border-color: var(--amber); } }
+body.blueprint .build-item { background: rgba(30, 24, 18, 0.6); border-color: rgba(212, 132, 42, 0.22); }
 .build-verb { font-family: var(--font-serif); font-size: 0.88rem; font-weight: 500; color: var(--maroon); margin-bottom: 0.25rem; }
 body.blueprint .build-verb { color: var(--text); }
 .build-detail { font-size: 0.83rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; }
