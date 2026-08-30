@@ -258,4 +258,55 @@
       if (href === current) a.classList.add('active');
     });
   })();
+
+  /* -----------------------------------------------
+     MOBILE DRAWER — burger built here so every page gets it
+     ----------------------------------------------- */
+  (function mobileDrawer() {
+    var nav = document.querySelector('.topbar-nav');
+    var topbar = document.querySelector('.topbar');
+    if (!nav || !topbar) return;
+
+    var burger = document.createElement('button');
+    burger.className = 'nav-burger';
+    burger.setAttribute('aria-label', 'Open navigation');
+    burger.setAttribute('aria-expanded', 'false');
+    burger.innerHTML = '<span></span><span></span><span></span>';
+
+    var backdrop = document.createElement('div');
+    backdrop.className = 'nav-drawer-backdrop';
+
+    function setDrawer(on) {
+      nav.classList.toggle('open', on);
+      backdrop.classList.toggle('visible', on);
+      burger.setAttribute('aria-expanded', String(on));
+    }
+
+    burger.addEventListener('click', function () { setDrawer(!nav.classList.contains('open')); });
+    backdrop.addEventListener('click', function () { setDrawer(false); });
+    nav.addEventListener('click', function (e) { if (e.target.closest('a')) setDrawer(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('open')) setDrawer(false);
+    });
+
+    // On phones the nav moves to <body>: fixed positioning inside the topbar gets
+    // trapped by its stacking/containing context.
+    var mq = window.matchMedia('(max-width: 760px)');
+    function placeNav() {
+      if (mq.matches) {
+        nav.classList.add('drawer');
+        document.body.appendChild(nav);
+      } else {
+        setDrawer(false);
+        nav.classList.remove('drawer');
+        topbar.insertBefore(nav, toggle || burger);
+      }
+    }
+    if (mq.addEventListener) mq.addEventListener('change', placeNav);
+    else if (mq.addListener) mq.addListener(placeNav);
+
+    topbar.appendChild(burger);
+    document.body.appendChild(backdrop);
+    placeNav();
+  })();
 })();
