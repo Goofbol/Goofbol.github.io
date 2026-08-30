@@ -1,6 +1,7 @@
 /* =============================================
-   NIHAAN MOHAMMED — PORTFOLIO V3
-   Shared stylesheet across all five pages.
+   NIHAAN MOHAMMED — PORTFOLIO V4 "CHART TABLE"
+   Shared stylesheet across all six pages.
+   Printed layer: Fraunces + maroon. Human layer: Kalam pencil.
    ============================================= */
 
 :root {
@@ -13,10 +14,13 @@
   --text:         #2C2C2C;
   --text-muted:   #6B6560;
   --border:       #E4DDD6;
+  --pencil:       #6A6156;
+  --grid-line:    rgba(107, 101, 96, 0.07);
 
   --font-serif:   'Fraunces', Georgia, serif;
   --font-sans:    'Space Grotesk', sans-serif;
   --font-mono:    'JetBrains Mono', monospace;
+  --font-hand:    'Kalam', cursive;
 
   --max-w:        1180px;
   --pad:          clamp(1.25rem, 4vw, 2.75rem);
@@ -29,7 +33,10 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: var(--cream);
+  background:
+    repeating-linear-gradient(0deg, var(--grid-line) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 32px),
+    var(--cream);
   color: var(--text);
   font-family: var(--font-sans);
   font-size: 16px;
@@ -41,6 +48,20 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* =============================================
+   PENCIL VOICE — the human layer
+   ============================================= */
+.hand {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  color: var(--pencil);
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+a.hand:hover { color: var(--maroon); }
+body.blueprint .hand { color: rgba(212, 132, 42, 0.85); }
+body.blueprint a.hand:hover { color: var(--amber); }
 
 a { color: var(--amber); text-decoration: none; transition: color var(--transition); }
 :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
@@ -101,14 +122,10 @@ body.blueprint .case-card:hover, body.blueprint .case-card.is-focused { border-c
 body.blueprint .case-detail { background: rgba(30, 24, 18, 0.6); border-color: rgba(212, 132, 42, 0.22); }
 body.blueprint .thinking-list li::before { color: var(--amber); }
 body.blueprint .img-frame { border-color: rgba(212, 132, 42, 0.4); background: rgba(30, 24, 18, 0.4); }
-body.blueprint .persona-card { background: rgba(30, 24, 18, 0.85); border-color: rgba(212, 132, 42, 0.22); }
-body.blueprint .persona-card:hover { border-color: rgba(212, 132, 42, 0.55); }
-body.blueprint .key-strip { background: rgba(20, 16, 12, 0.94); border-top-color: rgba(212, 132, 42, 0.22); }
 body.blueprint .kbd { background: rgba(212, 132, 42, 0.12); border-color: rgba(212, 132, 42, 0.4); color: var(--amber); }
 body.blueprint .overlay-panel { background: #1e1812; border-color: rgba(212, 132, 42, 0.3); }
 body.blueprint .ring-block { border-color: rgba(212, 132, 42, 0.22); background: rgba(30,24,18,0.6); }
 body.blueprint .waypoint .dot { background: #14100c; }
-body.blueprint .stat-tile { border-color: rgba(212, 132, 42, 0.22); background: rgba(30, 24, 18, 0.6); }
 body.blueprint .world-card { background: rgba(30, 24, 18, 0.85); border-color: rgba(212, 132, 42, 0.22); }
 body.blueprint .world-card:hover { border-color: rgba(212, 132, 42, 0.55); }
 body.blueprint .chapter-frame { border-color: rgba(212, 132, 42, 0.22); }
@@ -214,17 +231,12 @@ body.blueprint .wordmark svg { color: var(--text); }
 }
 
 #bp-toggle {
-  font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--text-muted); background: var(--surface); border: 1px solid var(--border); border-radius: 3px;
-  padding: 0.28rem 0.6rem; cursor: pointer; white-space: nowrap;
+  font-family: var(--font-hand); font-size: 0.85rem; text-transform: lowercase;
+  color: var(--pencil); background: none; border: 1.4px solid var(--pencil); border-radius: 50% / 42%;
+  transform: rotate(-1.5deg); padding: 0.12rem 0.75rem; cursor: pointer; white-space: nowrap;
 }
 #bp-toggle:focus-visible { box-shadow: 0 0 0 2px var(--amber); }
-#bp-toggle[aria-checked="true"] { background: var(--amber); color: #fff; border-color: var(--amber); }
-#bp-toggle::after {
-  content: ''; display: inline-block; width: 5px; height: 5px; border-radius: 50%;
-  background: currentColor; margin-left: 0.4rem; opacity: 0.5; vertical-align: middle;
-}
-#bp-toggle[aria-checked="true"]::after { opacity: 1; }
+#bp-toggle[aria-checked="true"] { background: var(--amber); color: #14100c; border-color: var(--amber); }
 
 /* =============================================
    REVEAL (IntersectionObserver baseline)
@@ -246,9 +258,11 @@ body.blueprint .wordmark svg { color: var(--text); }
    SECTION HEADERS
    ============================================= */
 .section-label {
-  font-family: var(--font-mono); font-size: 0.63rem; color: var(--text-muted); letter-spacing: 0.15em;
-  text-transform: uppercase; margin-bottom: 1.25rem; padding-bottom: 0.55rem; border-bottom: 1px solid var(--border);
+  font-family: var(--font-hand); font-size: 1.02rem; color: var(--pencil); letter-spacing: 0.01em;
+  text-transform: lowercase; margin-bottom: 1.1rem; display: inline-block; transform: rotate(-0.8deg);
 }
+.section-label::after { content: ' \2014'; opacity: 0.6; }
+body.blueprint .section-label { color: rgba(212, 132, 42, 0.85); }
 
 /* =============================================
    KEY GLYPH / KBD BADGE
@@ -262,17 +276,9 @@ body.blueprint .wordmark svg { color: var(--text); }
 /* =============================================
    CONTEXT FOOTER KEY STRIP
    ============================================= */
-.key-strip {
-  position: sticky; bottom: 0; z-index: 90; background: rgba(253, 252, 250, 0.88); backdrop-filter: blur(10px);
-  border-top: 1px solid var(--border); padding: 0.36rem var(--pad); display: flex; align-items: center;
-  gap: 0.9rem; flex-wrap: wrap; font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-muted);
-  letter-spacing: 0.02em; opacity: 0.72; transition: opacity 150ms ease;
-}
-.key-strip:hover { opacity: 1; }
-.key-strip .kbd { font-size: 0.58rem; padding: 0.04rem 0.32rem; opacity: 0.85; }
-.key-strip-item { display: flex; align-items: center; gap: 0.3rem; white-space: nowrap; }
-/* phones: no keyboard, no key hints (kept after .key-strip so it wins the cascade) */
-@media (max-width: 760px) { .key-strip { display: none; } }
+/* v4: the mono key-strip retired — the ? overlay carries the shortcuts, a pencil
+   margin note points at it. Rule kept so old markup stays invisible if it survives anywhere. */
+.key-strip { display: none; }
 
 /* =============================================
    FOOTER
@@ -313,69 +319,84 @@ body.blueprint .overlay-panel h2 { color: var(--text); }
   display: flex; align-items: center; justify-content: center; min-height: 160px; position: relative;
 }
 .img-frame::before {
-  content: 'IMG · awaiting'; font-family: var(--font-mono); font-size: 0.66rem; color: var(--text-muted);
-  letter-spacing: 0.08em; text-transform: uppercase;
+  content: 'photo goes here, once I dig one out'; font-family: var(--font-hand); font-size: 0.9rem;
+  color: var(--pencil); transform: rotate(-1deg); padding: 0 1rem; text-align: center;
 }
+body.blueprint .img-frame::before { color: rgba(212,132,42,0.85); }
 
 /* =============================================
-   PERSONA ENTRY CARDS (home)
+   V4 HOME — hero, chart line, waypoints, logbook
    ============================================= */
-.persona-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; }
-@media (max-width: 860px) { .persona-grid { grid-template-columns: 1fr; } }
-.persona-card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
-  padding: 1.3rem 1.2rem; display: flex; flex-direction: column; gap: 0.6rem;
-  text-decoration: none; color: inherit; transition: border-color var(--transition), transform 150ms var(--ease-out);
+.hero { padding: clamp(2rem, 5vw, 4rem) 0 1rem; display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(180px, 0.6fr); gap: 2rem; align-items: start; }
+@media (max-width: 760px) { .hero { grid-template-columns: 1fr; padding-top: 1.5rem; } }
+.hero-note { margin-bottom: 1.2rem; transform: rotate(-0.6deg); display: inline-block; }
+.hero h1 {
+  font-family: var(--font-serif); font-weight: 400;
+  font-size: clamp(2.1rem, 4.8vw, 3.3rem);
+  line-height: 1.1; letter-spacing: -0.02em; color: var(--text);
+  max-width: 660px; margin-bottom: 1.3rem;
 }
-.persona-card:hover { border-color: rgba(212,132,42,0.5); transform: translateY(-2px); }
-.persona-card:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
-.persona-card-top { display: flex; align-items: center; gap: 0.6rem; }
-.persona-card-top .kbd {
-  font-size: 0.62rem; color: var(--text-muted); background: transparent; border-color: transparent;
-  padding: 0.06rem 0.3rem; transition: color 150ms ease, border-color 150ms ease;
+body.blueprint .hero h1 { color: var(--text); }
+.hero .hl {
+  background: linear-gradient(100deg, transparent 0.5%, rgba(212,132,42,0.42) 3.5%, rgba(212,132,42,0.34) 50%, rgba(212,132,42,0.44) 96%, transparent 99.5%);
+  border-radius: 1px 10px 2px 7px; padding: 0.04em 0.09em 0.01em; margin-right: -0.09em;
+  color: var(--maroon); transform: skewX(-3deg); display: inline-block;
 }
-.persona-card:hover .persona-card-top .kbd, .persona-card:focus-visible .persona-card-top .kbd {
-  color: var(--amber); border-color: var(--border);
-}
-.persona-card-name { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 500; color: var(--maroon); }
-body.blueprint .persona-card-name { color: var(--text); }
-.persona-card-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; font-weight: 300; }
+body.blueprint .hero .hl { color: var(--amber); background: rgba(212,132,42,0.18); }
+.hero p { font-size: 1.02rem; line-height: 1.75; max-width: 560px; color: var(--text); font-weight: 300; }
 
-/* =============================================
-   STAT TILES (asymmetric, home)
-   ============================================= */
-.stat-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
-@media (max-width: 760px) { .stat-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.stat-tile { border: 1px solid var(--border); border-radius: 5px; padding: 0.9rem 1rem; background: var(--surface); }
-.stat-tile .num { font-family: var(--font-serif); font-size: 1.5rem; color: var(--maroon); line-height: 1; }
-body.blueprint .stat-tile .num { color: var(--text); }
-.stat-tile .label { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 0.35rem; }
+.mark-hero { justify-self: end; text-align: center; position: relative; padding-top: 0.6rem; }
+@media (max-width: 760px) { .mark-hero { justify-self: start; margin-top: 0.5rem; } }
+.mark-hero > svg.mark { width: 104px; height: 104px; color: var(--maroon); }
+body.blueprint .mark-hero > svg.mark { color: var(--text); }
+.mark-scribble { display: block; margin-top: 0.5rem; transform: rotate(-2deg); font-size: 0.85rem; }
+.mark-ring-sketch { position: absolute; top: -6px; left: 50%; transform: translateX(-50%); width: 136px; height: 132px; pointer-events: none; }
+.mark-ring-sketch path { stroke: var(--pencil); }
+body.blueprint .mark-ring-sketch path { stroke: rgba(212,132,42,0.6); }
 
-/* =============================================
-   WORK INDEX (condensed, home)
-   ============================================= */
-.work-index { display: flex; flex-direction: column; }
-.work-index-row {
-  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 0.7rem 0;
-  border-top: 1px solid var(--border); text-decoration: none; color: inherit;
-}
-.work-index-row:first-child { border-top: none; }
-.work-index-row:hover .work-index-title { color: var(--amber); }
-.work-index-title { font-family: var(--font-serif); font-size: 0.98rem; color: var(--maroon); font-weight: 500; }
-body.blueprint .work-index-title { color: var(--text); }
-.work-index-outcome { font-size: 0.8rem; color: var(--text-muted); font-weight: 300; text-align: right; flex-shrink: 0; }
+.coords { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--text-muted); margin-left: 0.4rem; }
+@media (max-width: 900px) { .coords { display: none; } }
 
-/* =============================================
-   ROUTE TEASER (home)
-   ============================================= */
-.route-teaser {
-  display: flex; align-items: center; gap: 1.1rem; text-decoration: none; color: inherit;
-  border: 1px solid var(--border); border-radius: 6px; padding: 1rem 1.2rem; background: var(--surface);
+.chart { position: relative; padding: 2rem 0 1rem; }
+.chart-svg { position: absolute; top: 0; left: 8px; height: 100%; width: 60px; }
+.chart-svg path, .chart-svg circle[fill="none"] { stroke: var(--pencil); }
+.chart-svg circle[fill]:not([fill="none"]) { fill: var(--maroon); }
+body.blueprint .chart-svg path, body.blueprint .chart-svg circle[fill="none"] { stroke: rgba(212,132,42,0.6); }
+body.blueprint .chart-svg circle[fill]:not([fill="none"]) { fill: var(--amber); }
+.waypoints { margin-left: 92px; display: flex; flex-direction: column; gap: 2.6rem; }
+@media (max-width: 760px) { .chart-svg { display: none; } .waypoints { margin-left: 0; } }
+.wp { max-width: 560px; position: relative; display: block; color: inherit; }
+.wp .wp-hand { font-size: 1.15rem; transform: rotate(-0.8deg); display: inline-block; }
+.wp h2 { font-family: var(--font-serif); font-weight: 500; font-size: 1.25rem; color: var(--maroon); margin: 0.15rem 0 0.3rem; }
+body.blueprint .wp h2 { color: var(--text); }
+.wp p { font-size: 0.92rem; line-height: 1.65; color: var(--text-muted); font-weight: 300; }
+.wp:hover h2 { text-decoration: underline; text-decoration-color: var(--amber); text-underline-offset: 4px; }
+
+.manifest-note { display: inline-block; transform: rotate(-1deg); margin-bottom: 0.8rem; font-size: 1.05rem; }
+.logrow {
+  display: grid; grid-template-columns: 200px 1fr auto; gap: 1.2rem; align-items: baseline;
+  padding: 1.05rem 0.2rem; border-bottom: 1px solid var(--border); color: inherit;
 }
-.route-teaser:hover { border-color: rgba(212,132,42,0.5); }
-.route-teaser svg { flex-shrink: 0; }
-.route-teaser-text { font-family: var(--font-serif); font-size: 0.95rem; color: var(--maroon); }
-body.blueprint .route-teaser-text { color: var(--text); }
+.logrow:first-of-type { border-top: 1px solid var(--border); }
+.logrow .t { font-family: var(--font-serif); font-weight: 500; font-size: 1.15rem; color: var(--maroon); }
+body.blueprint .logrow .t { color: var(--text); }
+.logrow .d { font-size: 0.92rem; line-height: 1.6; color: var(--text); font-weight: 300; }
+.logrow .m { font-family: var(--font-hand); font-size: 0.88rem; color: var(--pencil); text-align: right; white-space: nowrap; transform: rotate(-0.5deg); }
+body.blueprint .logrow .m { color: rgba(212,132,42,0.85); }
+.logrow:hover { background: rgba(212, 132, 42, 0.05); }
+@media (max-width: 760px) {
+  .logrow { grid-template-columns: 1fr; gap: 0.25rem; }
+  .logrow .m { text-align: left; }
+}
+
+.circled { position: relative; display: inline-block; padding: 0 0.15em; }
+.circled svg { position: absolute; inset: -11px -14px; width: calc(100% + 28px); height: calc(100% + 22px); pointer-events: none; }
+.circled svg path { stroke: var(--pencil); }
+body.blueprint .circled svg path { stroke: rgba(212,132,42,0.7); }
+
+.margin-notes { padding: 2.5rem 0 1.5rem; display: flex; gap: 3.5rem; flex-wrap: wrap; }
+.margin-notes .hand { font-size: 1rem; }
+.footer-hand { margin-left: auto; transform: rotate(-1deg); font-size: 0.9rem; }
 
 /* =============================================
    RING BLOCK (about — what's not here)
@@ -416,10 +437,12 @@ body.blueprint .world-card-name { color: var(--text); }
   margin-bottom: 1.2rem; overflow: hidden;
 }
 .deep-dive-header { padding: 1.4rem 1.6rem 0; }
-.deep-dive-world-label { font-family: var(--font-mono); font-size: 0.6rem; color: var(--amber); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.deep-dive-world-label { font-family: var(--font-hand); font-size: 0.95rem; color: var(--pencil); text-transform: lowercase; margin-bottom: 0.5rem; display: inline-block; transform: rotate(-0.7deg); }
+body.blueprint .deep-dive-world-label { color: rgba(212,132,42,0.85); }
 .deep-dive-title { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 400; color: var(--maroon); letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 0.2rem; }
 body.blueprint .deep-dive-title { color: var(--text); }
-.deep-dive-sub { font-size: 0.84rem; color: var(--text-muted); font-weight: 300; font-style: italic; padding-bottom: 1.2rem; }
+.deep-dive-sub { font-family: var(--font-hand); font-size: 0.95rem; color: var(--pencil); font-weight: 400; padding-bottom: 1.2rem; transform: rotate(-0.5deg); transform-origin: left; }
+body.blueprint .deep-dive-sub { color: rgba(212,132,42,0.85); }
 .deep-dive-products { padding: 0 1.6rem; display: flex; flex-direction: column; }
 .product-block { padding: 1.2rem 0; border-top: 1px solid var(--border); }
 .product-name { font-family: var(--font-serif); font-size: 0.96rem; font-weight: 500; color: var(--maroon); margin-bottom: 0.4rem; }
@@ -440,7 +463,8 @@ body.blueprint .product-name { color: var(--text); }
    CASE FILES (work.html) — keyboard-navigable
    ============================================= */
 .case-files { margin-top: 1.6rem; }
-.case-files-label { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.6rem; }
+.case-files-label { font-family: var(--font-hand); font-size: 1.02rem; color: var(--pencil); text-transform: lowercase; margin-bottom: 0.6rem; display: inline-block; transform: rotate(-0.8deg); }
+body.blueprint .case-files-label { color: rgba(212,132,42,0.85); }
 .case-files-intro { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; max-width: 58ch; margin-bottom: 1.2rem; font-weight: 300; }
 
 .case-index { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
@@ -464,10 +488,10 @@ body.blueprint .case-card-name { color: var(--text); }
 .case-card.ghost:hover { transform: none; border-color: var(--border); }
 .case-card.ghost .case-card-name { color: var(--text-muted); }
 .skel-tag {
-  font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--amber); background: var(--amber-dim); border-radius: 2px; padding: 0.15rem 0.5rem;
-  display: inline-block;
+  font-family: var(--font-hand); font-size: 0.85rem; text-transform: lowercase;
+  color: var(--pencil); display: inline-block; transform: rotate(-1deg);
 }
+body.blueprint .skel-tag { color: rgba(212,132,42,0.85); }
 
 .case-detail {
   grid-column: 1 / -1; margin-top: 0.7rem; border: 1px solid var(--border); border-radius: 5px;
@@ -477,9 +501,10 @@ body.blueprint .case-card-name { color: var(--text); }
 .case-detail[hidden] { display: none; }
 @media (max-width: 640px) { .case-detail { grid-template-columns: minmax(0, 1fr); } }
 .case-part-label {
-  font-family: var(--font-mono); font-size: 0.62rem; color: var(--amber); letter-spacing: 0.14em;
-  text-transform: uppercase; margin-bottom: 0.4rem;
+  font-family: var(--font-hand); font-size: 0.92rem; color: var(--pencil); text-transform: lowercase;
+  margin-bottom: 0.3rem; display: inline-block; transform: rotate(-0.6deg);
 }
+body.blueprint .case-part-label { color: rgba(212,132,42,0.85); }
 .case-part-body { font-size: 0.85rem; line-height: 1.6; color: var(--text); }
 .case-part-body .chip.proof { color: var(--maroon); border-color: rgba(139,26,26,0.3); font-style: normal; display: inline-block; white-space: normal; }
 body.blueprint .case-part-body .chip.proof { color: var(--text); border-color: rgba(212,132,42,0.4); }
@@ -513,10 +538,12 @@ body.blueprint .route-intro h1 { color: var(--text); }
 @media (prefers-reduced-motion: reduce) { .chapter { transition: none; } }
 
 .chapter-era {
-  font-family: var(--font-mono); font-size: 0.66rem; color: var(--amber); letter-spacing: 0.16em;
-  text-transform: uppercase; margin-bottom: 0.7rem; display: flex; align-items: center; gap: 0.6rem;
+  font-family: var(--font-hand); font-size: 1rem; color: var(--pencil);
+  text-transform: lowercase; margin-bottom: 0.7rem; display: flex; align-items: baseline; gap: 0.6rem;
+  transform: rotate(-0.6deg);
 }
-.chapter-era .sector { color: var(--text-muted); font-weight: 300; }
+body.blueprint .chapter-era { color: rgba(212,132,42,0.85); }
+.chapter-era .sector { color: var(--text-muted); font-weight: 400; }
 .chapter-title {
   font-family: var(--font-serif); font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 500;
   color: var(--maroon); letter-spacing: -0.01em; margin-bottom: 0.8rem; line-height: 1.2;
@@ -578,12 +605,8 @@ body.blueprint .route-end svg { color: var(--text); }
    ============================================= */
 .build-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0.85rem; }
 @media (max-width: 640px) { .build-grid { grid-template-columns: minmax(0, 1fr); } }
-.build-item {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
-  padding: 1.05rem 1.2rem 1.15rem; transition: border-color var(--transition);
-}
-@media (hover: hover) { .build-item:hover { border-color: var(--amber); } }
-body.blueprint .build-item { background: rgba(30, 24, 18, 0.6); border-color: rgba(212, 132, 42, 0.22); }
+.build-item { padding: 0.95rem 0.2rem 1rem; border-top: 1px solid var(--border); }
+body.blueprint .build-item { border-top-color: rgba(212, 132, 42, 0.22); }
 .build-verb { font-family: var(--font-serif); font-size: 0.88rem; font-weight: 500; color: var(--maroon); margin-bottom: 0.25rem; }
 body.blueprint .build-verb { color: var(--text); }
 .build-detail { font-size: 0.83rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; }
@@ -598,9 +621,10 @@ body.blueprint .build-verb { color: var(--text); }
 .mind-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; counter-reset: mind; }
 .mind-list li { font-size: 0.88rem; color: var(--text); line-height: 1.6; font-weight: 300; padding-left: 1.6rem; position: relative; counter-increment: mind; }
 .mind-list li::before {
-  content: counter(mind, decimal-leading-zero); position: absolute; left: 0; top: 0; color: var(--amber);
-  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.02em;
+  content: counter(mind) '.'; position: absolute; left: 0; top: 0; color: var(--pencil);
+  font-family: var(--font-hand); font-size: 0.92rem;
 }
+body.blueprint .mind-list li::before { color: rgba(212,132,42,0.85); }
 
 /* =============================================
    SHELF
@@ -611,7 +635,8 @@ body.blueprint .build-verb { color: var(--text); }
 .shelf-author { font-family: var(--font-serif); font-size: 0.94rem; font-weight: 500; color: var(--maroon); }
 body.blueprint .shelf-author { color: var(--text); }
 .shelf-note { font-size: 0.82rem; color: var(--text-muted); font-weight: 300; line-height: 1.55; margin-top: 0.25rem; max-width: 60ch; }
-.shelf-frame-line { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-muted); letter-spacing: 0.06em; margin-bottom: 0.9rem; text-transform: uppercase; }
+.shelf-frame-line { font-family: var(--font-hand); font-size: 0.92rem; color: var(--pencil); margin-bottom: 0.9rem; text-transform: lowercase; display: inline-block; transform: rotate(-0.6deg); }
+body.blueprint .shelf-frame-line { color: rgba(212,132,42,0.85); }
 
 /* =============================================
    RESUME
@@ -658,9 +683,10 @@ body.blueprint .resume-download:hover { background: var(--amber); color: #14100c
 
 .resume-block { margin-bottom: 1.9rem; }
 .resume-block-label {
-  font-family: var(--font-mono); font-size: 0.6rem; color: var(--amber); letter-spacing: 0.14em;
-  text-transform: uppercase; margin-bottom: 0.9rem;
+  font-family: var(--font-hand); font-size: 0.98rem; color: var(--pencil); text-transform: lowercase;
+  margin-bottom: 0.9rem; display: inline-block; transform: rotate(-0.7deg);
 }
+body.blueprint .resume-block-label { color: rgba(212,132,42,0.85); }
 .resume-row {
   display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
   padding: 0.8rem 0; border-top: 1px solid var(--border);
@@ -744,20 +770,17 @@ p.page-lede { font-size: 0.95rem; color: var(--text-muted); line-height: 1.65; m
    MOTION — hover micro-lift, press states, card warm-up
    Ceiling 200ms everywhere. prefers-reduced-motion: complete, still.
    ============================================= */
-.persona-card, .world-card, .case-card:not(.ghost), .route-teaser, .stat-tile, .shelf-entry {
+.case-card:not(.ghost), .shelf-entry {
   transition: border-color 150ms ease, transform 150ms var(--ease-out), box-shadow 150ms var(--ease-out);
 }
-.persona-card:hover, .world-card:hover, .case-card:not(.ghost):hover, .case-card.is-focused,
-.route-teaser:hover {
+.case-card:not(.ghost):hover, .case-card.is-focused {
   box-shadow: 0 8px 20px -14px rgba(44,44,44,0.35);
 }
-body.blueprint .persona-card:hover, body.blueprint .world-card:hover,
-body.blueprint .case-card:not(.ghost):hover, body.blueprint .case-card.is-focused,
-body.blueprint .route-teaser:hover { box-shadow: none; }
+body.blueprint .case-card:not(.ghost):hover, body.blueprint .case-card.is-focused { box-shadow: none; }
 
-.persona-card:active, .world-card:active, .case-card:not(.ghost):active,
-.contact-btn:active, .resume-download:active, #bp-toggle:active,
-.route-nav-btn:active:not(:disabled), button:active { transform: scale(0.97); }
+.case-card:not(.ghost):active,
+.contact-btn:active, .resume-download:active,
+.route-nav-btn:active:not(:disabled) { transform: scale(0.97); }
 
 #bp-toggle, .contact-btn, .route-nav-btn { transition: background 150ms ease, color 150ms ease, border-color 150ms ease, transform 100ms var(--ease-out); }
 
@@ -783,11 +806,11 @@ body.blueprint .route-teaser:hover { box-shadow: none; }
   .chapter { transform: none; transition: none; }
   .topbar, h1.page-title, .page-lede, .resume-lede { animation: none; }
   .route-progress::after { animation: none; transform: none; }
-  .persona-card, .world-card, .case-card:not(.ghost), .route-teaser, .stat-tile, .shelf-entry,
-  .waypoint .dot, #bp-toggle, .contact-btn, .route-nav-btn { transition: none; }
-  .persona-card:active, .world-card:active, .case-card:not(.ghost):active,
-  .contact-btn:active, .resume-download:active, #bp-toggle:active,
-  .route-nav-btn:active:not(:disabled), button:active { transform: none; }
+  .case-card:not(.ghost), .shelf-entry,
+  .waypoint .dot, .contact-btn, .route-nav-btn { transition: none; }
+  .case-card:not(.ghost):active,
+  .contact-btn:active, .resume-download:active,
+  .route-nav-btn:active:not(:disabled) { transform: none; }
 }
 
 /* =============================================

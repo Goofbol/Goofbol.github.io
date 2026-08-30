@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect x='2' y='2' width='92' height='92' rx='18' fill='%238B1A1A'/%3E%3Cpolyline points='26,68 26,28 46,68 46,28 58,50 70,28 70,68' fill='none' stroke='%23FDFCFA' stroke-width='6.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='58' cy='50' r='2.6' fill='%23D4842A'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Space+Grotesk:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&family=Kalam:wght@300;400&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/site.css" />
 </head>
 <body>
@@ -47,124 +47,116 @@
   <a href="index.html" class="wordmark">
     <svg viewBox="0 0 96 96" aria-hidden="true"><use href="#plane" stroke="currentColor" /><use href="#hits" fill="#D4842A" /><use href="#ring" stroke="currentColor" /><use href="#reg" stroke="currentColor" /></svg>
     Nihaan Mohammed<span class="dot">.</span>
+    <span class="coords">28.61°N 77.20°E</span>
   </a>
   <nav class="topbar-nav" aria-label="Page navigation">
-    <a href="index.html" class="nav-link"><span class="nav-key">H</span><span class="nav-label">Home</span></a>
+    <a href="index.html" class="nav-link active"><span class="nav-key">H</span><span class="nav-label">Home</span></a>
     <a href="route.html" class="nav-link"><span class="nav-key">R</span><span class="nav-label">Route</span></a>
     <a href="work.html" class="nav-link"><span class="nav-key">W</span><span class="nav-label">Work</span></a>
     <a href="about.html" class="nav-link"><span class="nav-key">A</span><span class="nav-label">About</span></a>
     <a href="library.html" class="nav-link"><span class="nav-key">L</span><span class="nav-label">Library</span></a>
     <a href="resume.html" class="nav-link"><span class="nav-key">E</span><span class="nav-label">Resume</span></a>
   </nav>
-  <button id="bp-toggle" role="switch" aria-checked="false" aria-label="Blueprint mode: reveal design annotations">Blueprint</button>
+  <button id="bp-toggle" role="switch" aria-checked="false" aria-label="Blueprint mode: reveal design annotations">blueprint</button>
 </header>
 
 <main class="page-main">
   <div class="container">
 
     <!-- HERO -->
-    <section class="split-2col reveal" aria-label="Introduction" style="margin-bottom: 2rem;">
+    <section class="hero reveal" aria-label="Introduction">
       <div>
-        <div class="hero-tag" style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.1rem;">Product Manager</div>
-        <h1 style="font-family: var(--font-serif); font-size: clamp(1.9rem, 4.2vw, 2.9rem); font-weight: 400; line-height: 1.12; color: var(--maroon); letter-spacing: -0.02em; margin-bottom: 1.1rem; max-width: 640px;">I design the system. Engineers build from my specs. These days, so do I.</h1>
-        <p style="font-size: 1rem; line-height: 1.7; max-width: 540px; font-weight: 300;">Four years building data-heavy grants and field-data software, from stakeholder requirements to shipped features at scale. Now the delivery loop runs with AI agents in it, and I'm in the loop too: the review is still the job.</p>
-        <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.1em; margin-top: 1.4rem;">Tech for good &nbsp;&middot;&nbsp; New Delhi</div>
-        <div class="ann">One headline, two claims: the design job and the build job, in the order they actually happen. No separate line needed once the sentence already carries both.</div>
+        <div class="hero-note hand">product manager &middot; tech for good &middot; New Delhi</div>
+        <h1>I design the system. Engineers build from my <span class="hl">specs</span>. These days, so do I.</h1>
+        <p>Four years building data-heavy grants and field-data software, from stakeholder requirements to shipped features. Now the delivery loop runs with AI agents in it, and I'm in the loop too: the review is still the job.</p>
+        <div class="ann">One headline, two claims: the design job and the build job, in the order they actually happen. The amber swipe is the page's only highlighter moment, spent on the word that carries the thesis.</div>
       </div>
-      <svg viewBox="0 0 96 96" aria-hidden="true" style="width: 96px; height: 96px; color: var(--maroon); justify-self: end;"><use href="#plane" stroke="currentColor" /><use href="#hits" fill="#D4842A" /><use href="#ring" stroke="currentColor" /><use href="#reg" stroke="currentColor" /></svg>
-    </section>
-
-    <!-- PERSONA ENTRY CARDS -->
-    <section aria-label="Three ways in">
-      <div class="persona-grid">
-        <a href="work.html" class="persona-card reveal">
-          <div class="persona-card-top"><span class="kbd">W</span><span class="persona-card-name">The work</span></div>
-          <div class="persona-card-desc">Case files with numbers. Four worlds, the ask versus the real ask, and what shipped.</div>
-        </a>
-        <a href="route.html" class="persona-card reveal reveal-delay-1">
-          <div class="persona-card-top"><span class="kbd">R</span><span class="persona-card-name">The route</span></div>
-          <div class="persona-card-desc">One line, five chapters. How a Navy kid's kid ended up specifying grants software.</div>
-        </a>
-        <a href="resume.html" class="persona-card reveal reveal-delay-2">
-          <div class="persona-card-top"><span class="kbd">E</span><span class="persona-card-name">The resume</span></div>
-          <div class="persona-card-desc">Sixty seconds, spec density. Downloadable as one sheet.</div>
-        </a>
-      </div>
-      <div class="ann">Three cards, three readers: the recruiter skimming, the peer checking the craft, the client sizing up the case files. Each carries its own key. No tutorial, because a person who needs one won't read it anyway.</div>
-    </section>
-
-    <!-- CONDENSED WORK INDEX + ROUTE TEASER -->
-    <section class="split-2col" aria-label="Selected work and the route">
-      <div class="reveal">
-        <div class="section-label">Selected Work</div>
-        <div class="work-index">
-          <a href="work.html#w-mgrant" class="work-index-row">
-            <span class="work-index-title">mGrant</span>
-            <span class="work-index-outcome">₹5,000 Cr+ governed &middot; 40+ donors</span>
-          </a>
-          <a href="work.html#w-mform" class="work-index-row">
-            <span class="work-index-title">mForm</span>
-            <span class="work-index-outcome">1L+ offline field users &middot; 30+ orgs</span>
-          </a>
-          <a href="work.html#w-frappe" class="work-index-row">
-            <span class="work-index-title">Frappe &middot; open-source</span>
-            <span class="work-index-outcome">Mobile SDK, Helpdesk hub, delivery toolkit</span>
-          </a>
-          <a href="work.html#w-ai" class="work-index-row">
-            <span class="work-index-title">AI-assisted building</span>
-            <span class="work-index-outcome">5+ client builds on the Builder Protocol</span>
-          </a>
-        </div>
-      </div>
-      <div class="reveal reveal-delay-1">
-        <div class="section-label">Stats</div>
-        <div class="stat-row">
-          <div class="stat-tile"><div class="num">₹5,000 Cr+</div><div class="label">Grants governed</div></div>
-          <div class="stat-tile"><div class="num">1,500+</div><div class="label">NGOs on platform</div></div>
-          <div class="stat-tile"><div class="num">1L+</div><div class="label">Offline field users</div></div>
-          <div class="stat-tile"><div class="num">96.5%</div><div class="label">School finish score</div></div>
-        </div>
-      </div>
-    </section>
-    <div class="ann">Titles and one-line outcomes here, the actual case files live on Work. Nobody needs the whole file cabinet on the front porch.</div>
-
-    <!-- ROUTE TEASER -->
-    <section aria-label="The route, teased">
-      <a href="route.html" class="route-teaser reveal">
-        <svg viewBox="0 0 64 64" aria-hidden="true" style="width: 40px; height: 40px;">
-          <path d="M8 8 L8 30 Q8 44 20 44 L44 44 Q56 44 56 56" fill="none" stroke="var(--amber)" stroke-width="2.2" stroke-linecap="round" />
-          <circle cx="8" cy="8" r="2.6" fill="var(--amber)" />
-          <circle cx="56" cy="56" r="2.6" fill="none" stroke="var(--maroon)" stroke-width="1.4" stroke-dasharray="2.5 2.5" />
+      <div class="mark-hero">
+        <svg class="mark-ring-sketch" viewBox="0 0 136 132" aria-hidden="true">
+          <path d="M68 5 C 106 3, 133 28, 131 66 C 129 105, 103 128, 66 127 C 30 126, 4 102, 5 64 C 6 27, 32 7, 68 5"
+                fill="none" stroke-width="1.1" opacity="0.55" stroke-linecap="round" />
         </svg>
-        <span class="route-teaser-text">One line, five chapters.</span>
-      </a>
+        <svg class="mark" viewBox="0 0 96 96" aria-hidden="true"><use href="#plane" stroke="currentColor" /><use href="#hits" fill="#D4842A" /><use href="#ring" stroke="currentColor" /><use href="#reg" stroke="currentColor" /></svg>
+        <a class="mark-scribble hand" href="about.html#mark">the mark is a return flight &rarr;</a>
+      </div>
     </section>
 
-    <!-- WHAT'S NOT HERE TEASER -->
-    <section aria-label="What's not here">
-      <a href="about.html#not-here" class="route-teaser reveal" style="border-style: dashed;">
-        <svg viewBox="0 0 40 40" aria-hidden="true" style="width: 32px; height: 32px; flex-shrink: 0;">
-          <circle cx="20" cy="20" r="9" fill="none" stroke="var(--amber)" stroke-width="1.8" stroke-dasharray="3 3" />
-        </svg>
-        <span class="route-teaser-text">What's not here, and why.</span>
-      </a>
+    <!-- CHART LINE + WAYPOINTS -->
+    <section class="chart" aria-label="Three ways in">
+      <svg class="chart-svg" viewBox="0 0 60 560" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M30 0 C 26 30, 34 55, 29 82 C 25 120, 33 160, 30 200 C 27 240, 34 280, 29 316 C 26 355, 33 400, 30 440 C 28 480, 31 510, 29 538"
+              fill="none" stroke-width="1.3" stroke-dasharray="7 5" opacity="0.6" stroke-linecap="round" />
+        <circle cx="29" cy="82" r="4" />
+        <circle cx="30" cy="272" r="4" />
+        <circle cx="29" cy="462" r="4" fill="none" stroke-width="1.4" stroke-dasharray="2.5 2.5" />
+        <path d="M29 538 L24 548 M29 538 L34 548" stroke-width="1.3" opacity="0.6" stroke-linecap="round" />
+      </svg>
+      <div class="waypoints">
+        <a href="work.html" class="wp reveal">
+          <span class="wp-hand hand">the work &rarr;</span>
+          <h2>Case files with numbers</h2>
+          <p>Four areas of work. Each case file records what was asked, what was actually needed, the call I made, and what shipped.</p>
+        </a>
+        <a href="route.html" class="wp reveal reveal-delay-1">
+          <span class="wp-hand hand">the route &rarr;</span>
+          <h2>One line, five chapters</h2>
+          <p>How a Navy captain's kid ended up specifying grants software. Read left to right, the way it happened.</p>
+        </a>
+        <a href="resume.html" class="wp reveal reveal-delay-2">
+          <span class="wp-hand hand">the resume &rarr;</span>
+          <h2>The one-page version</h2>
+          <p>Everything above, compressed to a sheet you can download.</p>
+        </a>
+      </div>
+      <div class="ann">The dashed line is the route motif doing the navigation's job: three waypoints instead of three cards. Hover underlines in amber; the third dot is dashed because the resume is the destination you print.</div>
     </section>
+
+    <!-- MANIFEST -->
+    <section class="manifest" aria-label="Selected work">
+      <span class="manifest-note hand">in the manifest right now &mdash;</span>
+      <a href="work.html#w-mgrant" class="logrow reveal">
+        <span class="t">mGrant</span>
+        <span class="d">Grant lifecycle software for the corporates who give and the NGOs who receive.
+          <span class="circled">&#8377;5,000&nbsp;Cr+
+            <svg viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M14 20 C 12 8, 46 3, 74 5 C 102 7, 116 13, 113 22 C 110 33, 76 38, 44 36 C 18 34, 8 28, 12 17"
+                    fill="none" stroke-width="1.2" opacity="0.65" stroke-linecap="round" />
+            </svg>
+          </span> governed across 40+ donors.</span>
+        <span class="m">both sides of the money</span>
+      </a>
+      <a href="work.html#w-mform" class="logrow reveal">
+        <span class="t">mForm</span>
+        <span class="d">Field data collection serving 1 Lakh+ users across 30+ organisations, built for low- and no-connectivity.</span>
+        <span class="m">works offline, syncs when it can</span>
+      </a>
+      <a href="work.html#w-frappe" class="logrow reveal">
+        <span class="t">Frappe &middot; open-source</span>
+        <span class="d">Mobile SDK, a Helpdesk-based delivery hub, and internal tooling across the Frappe/ERPNext ecosystem.</span>
+        <span class="m">across the stack, in the open</span>
+      </a>
+      <a href="work.html#w-ai" class="logrow reveal">
+        <span class="t">AI-assisted building</span>
+        <span class="d">The Builder Protocol: a three-role delivery model running live across 5+ client builds.</span>
+        <span class="m">rebuilt how delivery works</span>
+      </a>
+      <div class="ann">A logbook, not a card grid: ruled rows, pencil remarks in the margin column, and exactly one number circled by hand. The numbers live inside sentences where they can be argued with.</div>
+    </section>
+
+    <!-- MARGIN NOTES -->
+    <div class="margin-notes">
+      <a class="hand" href="about.html#not-here" style="transform: rotate(0.8deg);">what's not here, and why &rarr;</a>
+      <a class="hand" href="library.html" style="transform: rotate(-0.5deg);">the library lends, press L &rarr;</a>
+      <a class="hand" href="#" data-overlay-open style="transform: rotate(-1.1deg);">press ? for all the keys</a>
+    </div>
 
   </div>
 </main>
 
-<div class="key-strip" aria-hidden="true">
-  <span class="key-strip-item"><span class="kbd">W</span> work</span>
-  <span class="key-strip-item"><span class="kbd">R</span> route</span>
-  <span class="key-strip-item"><span class="kbd">A</span> about</span>
-  <span class="key-strip-item"><span class="kbd">E</span> resume</span>
-  <span class="key-strip-item"><span class="kbd">B</span> blueprint</span>
-  <span class="key-strip-item"><span class="kbd">?</span> all keys</span>
-</div>
-
 <footer>
   <svg viewBox="0 0 96 96" aria-hidden="true"><use href="#tile" /></svg>
-  <span class="footer-copy">&copy; 2026 Nihaan Mohammed &middot; built with Claude in the loop</span>
+  <span class="footer-copy">&copy; 2026 Nihaan Mohammed</span>
+  <span class="footer-hand hand">built with Claude in the loop</span>
 </footer>
 
 <div class="overlay-backdrop" id="shortcut-overlay" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">

@@ -67,14 +67,12 @@
     revealed = true;
     contactBtn.setAttribute('aria-expanded', 'true');
 
-    var personal = ['reachme', '@', 'nihaanmohammed', '.', 'com'].join('');
-    var work = ['nihaan.mohammed', '@', 'outlook', '.', 'com'].join('');
+    var email = ['reachme', '@', 'nihaanmohammed', '.', 'com'].join('');
     var linkedin = 'https://linkedin.com/in/nihaan-mohammed';
     var github = 'https://github.com/Goofbol';
 
     var rows = [
-      { label: 'Personal', value: personal, href: 'mailto:' + personal },
-      { label: 'Professional', value: work, href: 'mailto:' + work },
+      { label: 'Email', value: email, href: 'mailto:' + email },
       { label: 'LinkedIn', value: 'nihaan-mohammed', href: linkedin },
       { label: 'GitHub', value: 'Goofbol', href: github }
     ];
@@ -147,6 +145,13 @@
       if (e.target === overlay) closeOverlay();
     });
   }
+
+  document.querySelectorAll('[data-overlay-open]').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      openOverlay();
+    });
+  });
 
   /* -----------------------------------------------
      KEYBOARD MODEL (global, single keys, no chords)
