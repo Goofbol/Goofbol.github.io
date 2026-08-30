@@ -67,7 +67,7 @@
     revealed = true;
     contactBtn.setAttribute('aria-expanded', 'true');
 
-    var personal = ['nihaanmohammed33', '@', 'gmail', '.', 'com'].join('');
+    var personal = ['reachme', '@', 'nihaanmohammed', '.', 'com'].join('');
     var work = ['nihaan.mohammed', '@', 'outlook', '.', 'com'].join('');
     var linkedin = 'https://linkedin.com/in/nihaan-mohammed';
     var github = 'https://github.com/Goofbol';
