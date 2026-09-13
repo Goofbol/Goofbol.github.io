@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Library · Nihaan Mohammed</title>
-<meta name="description" content="Nihaan Mohammed's personal library: every book on the shelf, the favorites, the arguments, and the Reading Room of sites and papers behind them. Borrow a book, or talk to him about it." />
+<meta name="description" content="Nihaan Mohammed's personal library: every book on the shelf, the favorites, the arguments, and the Reading Room of sites and papers behind them. Every book carries a short summary. If you have read one, talk to him about it." />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect x='2' y='2' width='92' height='92' rx='18' fill='%238B1A1A'/%3E%3Cpolyline points='26,68 26,28 46,68 46,28 58,50 70,28 70,68' fill='none' stroke='%23FDFCFA' stroke-width='6.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='58' cy='50' r='2.6' fill='%23D4842A'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -66,7 +66,7 @@ body.blueprint .shelf-row { border-bottom-color: rgba(212,132,42,0.35); }
 body.blueprint .ghost-tile { background: transparent; border-color: var(--amber); color: var(--amber); }
 .lib-empty { font-family: var(--font-serif); font-style: italic; font-size: 0.85rem; color: var(--text-muted); padding: 1rem 0.2rem; }
 
-/* the reading room — the unbound shelf; links out, nothing to borrow */
+/* the reading room — the unbound shelf; links out */
 .rr-lede { font-family: var(--font-serif); font-style: italic; font-size: 0.88rem; line-height: 1.55; color: var(--text-muted); margin: 0 0 1.4rem; max-width: 560px; }
 .rr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px, 1fr)); gap: 0.7rem; margin-bottom: 0.4rem; }
 .rr-slip { position: relative; display: block; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.85rem 1rem 0.95rem; text-decoration: none; color: var(--text); transition: transform 0.18s var(--ease-out), border-color var(--transition); }
@@ -168,8 +168,8 @@ body.blueprint .lib-card { background: #1e1812; border-color: rgba(212,132,42,0.
   <div class="container">
 
     <h1 class="page-title reveal">The Library</h1>
-    <p class="page-lede reveal">Every book here is on my shelf at home in Delhi. Borrow one if you are around. And if you have read something on this shelf, email me, I like arguing about books.</p>
-    <div class="ann">Inventory, not claims. Anyone can write "I love reading" on a portfolio; a catalogued, borrowable shelf is evidence. Sci-fi framed the thinking; the rest of the room explains the rest.</div>
+    <p class="page-lede reveal">Every book here is on my shelf at home in Delhi. Pull one for the short version. And if you have read something on this shelf, email me, I like arguing about books.</p>
+    <div class="ann">Inventory, not claims. Anyone can write "I love reading" on a portfolio; a catalogued shelf with a summary on every book is evidence. Sci-fi framed the thinking; the rest of the room explains the rest.</div>
 
     <div class="lib-desk">
       <div class="lib-stats" id="lib-stats"></div>
@@ -196,7 +196,7 @@ body.blueprint .lib-card { background: #1e1812; border-color: rgba(212,132,42,0.
     <section id="reading-room" aria-label="The reading room" style="margin-top:3rem">
       <div class="section-label">The Reading Room</div>
       <div class="ann">Same argument as the shelves: curation is the evidence. Thirteen links with a reason each beats a hundred bookmarks. Static by design: nothing fetches, nothing breaks, every URL checked before shipping.</div>
-      <p class="rr-lede">Sites and papers I keep going back to. These live online, so no borrowing, just links.</p>
+      <p class="rr-lede">Sites and papers I keep going back to. These live online, just links.</p>
 
       <div class="shelf-block">
         <div class="shelf-head"><span class="shelf-name"><b>LessWrong · The Home Shelf</b> · 6 reads</span></div>
@@ -339,22 +339,16 @@ body.blueprint .lib-card { background: #1e1812; border-color: rgba(212,132,42,0.
   'use strict';
   var DATA = window.LIBRARY_DATA || { themes: {}, books: [] };
   var THEMES = DATA.themes, BOOKS = DATA.books;
-  var CHARM = 'this library lends and argues. it doesn’t photocopy.';
+  var CHARM = 'this library argues. the books stay on the shelf.';
   var state = { q: '', theme: 'all', era: 'all', picks: false, open: {} };
   BOOKS.forEach(function (b, i) { b._code = 'LIB-' + String(i + 1).padStart(3, '0'); });
 
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function era(y) { if (!y) return null; if (y < 1900) return 'pre-1900'; if (y < 1950) return '1900–1949'; return (Math.floor(y / 10) * 10) + 's'; }
   function mailAddr() { return ['reachme', '@', 'nihaanmohammed', '.', 'com'].join(''); }
-  function mailto(kind, b) {
-    var subj, body;
-    if (kind === 'borrow') {
-      subj = 'Borrowing: ' + b.title;
-      body = 'Hi Nihaan,\n\nI want to borrow ' + b.title + ' (' + b.author + ') off your shelf. Here’s who I am and how to get it to me:\n\n';
-    } else {
-      subj = 'About ' + b.title;
-      body = (b.starter ? b.starter : 'I pulled ' + b.title + ' off your shelf. Talk to me about it.') + '\n\n';
-    }
+  function mailto(b) {
+    var subj = 'About ' + b.title;
+    var body = (b.starter ? b.starter : 'I pulled ' + b.title + ' off your shelf. Talk to me about it.') + '\n\n';
     return 'mailto:' + mailAddr() + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
   }
 
@@ -457,14 +451,7 @@ body.blueprint .lib-card { background: #1e1812; border-color: rgba(212,132,42,0.
     if (b.fav) meta += ' · <span class="star">★ pick</span>';
     if (b.status === 'reading') meta += ' · <span class="star">reading now</span>';
     var readBlock = b.reflection ? '<div class="lc-read">“' + esc(b.reflection) + '”<span class="who">the reader · Nihaan</span></div>' : '';
-    var actions = '';
-    if (b.status === 'reading') {
-      actions = '<a class="lc-btn primary" href="' + mailto('talk', b) + '">Talk to me about it</a>';
-    } else {
-      actions = (b.lendable === false ? '<span class="lc-btn ghosty" style="cursor:default">reference · doesn’t leave the library</span>'
-        : '<a class="lc-btn primary" href="' + mailto('borrow', b) + '">Borrow this book</a>') +
-        '<a class="lc-btn ghosty" href="' + mailto('talk', b) + '">Talk to me about it</a>';
-    }
+    var actions = '<a class="lc-btn primary" href="' + mailto(b) + '">Talk to me about it</a>';
     card.innerHTML = '<button class="close" aria-label="Close">esc ✕</button>' +
       '<div class="lc-cover">' + coverHTML(b) + '</div>' +
       '<div><h2 class="lc-title">' + esc(b.title) + '</h2><div class="lc-meta">' + meta + '</div>' +
