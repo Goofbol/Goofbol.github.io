@@ -28,6 +28,8 @@
 .nightstand { display: flex; align-items: center; gap: 1.1rem; border: 1px solid var(--border); background: var(--surface); border-radius: 10px; padding: 0.95rem 1.15rem; margin-bottom: 2.4rem; max-width: 560px; cursor: pointer; transition: border-color var(--transition), transform var(--transition); }
 @media (hover: hover) { .nightstand:hover { border-color: var(--amber); transform: translateY(-2px); } }
 .nightstand img, .nightstand .cover-fallback { width: 58px; height: 86px; object-fit: cover; border-radius: 2px 4px 4px 2px; transform: rotate(-3.5deg); box-shadow: 2px 3px 8px rgba(0,0,0,0.18); flex: none; }
+.nightstand .cover-fallback { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.25rem; padding: 0.3rem; border: 1px solid var(--border); background: var(--surface); font-family: var(--font-serif); font-size: 0.55rem; line-height: 1.25; text-align: center; color: var(--maroon); overflow: hidden; }
+.nightstand .cover-fallback small { font-family: var(--font-mono); font-size: 0.44rem; color: var(--text-muted); letter-spacing: 0.04em; }
 .ns-k { font-family: var(--font-mono); font-size: 0.62rem; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.15rem; }
 .ns-t { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 500; }
 .ns-a { font-size: 0.78rem; color: var(--text-muted); }
