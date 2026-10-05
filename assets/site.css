@@ -481,6 +481,8 @@ body.blueprint .product-name { color: var(--text); }
 .deep-dive-imgs { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.7rem; padding: 0 1.6rem 1.4rem; }
 @media (max-width: 560px) { .deep-dive-imgs { grid-template-columns: 1fr; } }
 .deep-dive-imgs .img-frame { min-height: 110px; }
+.work-photo { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid var(--border); border-radius: 5px; }
+body.blueprint .work-photo { border-color: rgba(212, 132, 42, 0.4); filter: sepia(0.25) brightness(0.88); }
 
 /* =============================================
    CASE FILES (work.html) — keyboard-navigable
