@@ -587,6 +587,8 @@ body.blueprint .chapter-title { color: var(--text); }
 
 .chapter-frame { align-self: start; }
 .chapter-frame .img-frame { aspect-ratio: 4 / 5; min-height: 200px; }
+.chapter-photo { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 5px; }
+body.blueprint .chapter-photo { border-color: rgba(212, 132, 42, 0.4); filter: sepia(0.25) brightness(0.88); }
 
 .route-end { display: flex; align-items: center; gap: 1.1rem; margin-top: 1.2rem; }
 .route-end svg { width: 50px; height: 50px; color: var(--maroon); flex-shrink: 0; }
