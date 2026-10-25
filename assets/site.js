@@ -57,14 +57,16 @@
   /* -----------------------------------------------
      CONTACT REVEAL — emails assembled at runtime, never in markup
      ----------------------------------------------- */
-  var contactBtn = document.getElementById('contact-btn');
-  var contactReveal = document.getElementById('contact-reveal');
-  var contactLinks = document.getElementById('contact-links');
-  var revealed = false;
+  // Page section (resume) and footer each carry a .contact-btn; each fills its own reveal.
+  var contactBtns = Array.prototype.slice.call(document.querySelectorAll('.contact-btn'));
 
-  function revealContact() {
-    if (revealed || !contactBtn || !contactReveal || !contactLinks) return;
-    revealed = true;
+  function revealContact(contactBtn) {
+    contactBtn = contactBtn || contactBtns[0];
+    if (!contactBtn) return null;
+    var contactReveal = document.getElementById(contactBtn.getAttribute('aria-controls'));
+    var contactLinks = contactReveal && contactReveal.querySelector('.contact-links');
+    if (!contactLinks) return null;
+    if (contactBtn.getAttribute('aria-expanded') === 'true') return contactBtn;
     contactBtn.setAttribute('aria-expanded', 'true');
 
     var email = ['reachme', '@', 'nihaanmohammed', '.', 'com'].join('');
@@ -86,9 +88,12 @@
 
     contactReveal.classList.add('visible');
     contactReveal.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
+    return contactBtn;
   }
 
-  if (contactBtn) contactBtn.addEventListener('click', revealContact);
+  contactBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () { revealContact(btn); });
+  });
   window.__revealContact = revealContact;
 
   /* -----------------------------------------------
@@ -206,8 +211,8 @@
     }
 
     if (upper === 'C') {
-      revealContact();
-      var wrap = document.querySelector('.contact-wrap') || document.getElementById('contact-btn');
+      var shown = revealContact();
+      var wrap = shown && (shown.closest('.contact-wrap') || shown);
       if (wrap) wrap.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
       e.preventDefault();
       return;

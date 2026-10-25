@@ -40,6 +40,16 @@
       <use href="#ring" stroke="#FDFCFA" />
       <use href="#reg" stroke="#FDFCFA" />
     </g>
+    <path id="lap-s1" d="M44 116 L44 52 Q44 30 66 30 L126 30" />
+    <path id="lap-s2" d="M126 30 L196 30 Q218 30 218 52 L218 74 Q218 92 200 96 L150 106" />
+    <path id="lap-s3" d="M150 106 L70 124 Q44 130 44 116" />
+    <g id="lap" fill="none" stroke-width="1" stroke-linecap="round" opacity="0.5">
+      <use href="#lap-s1" /><use href="#lap-s2" /><use href="#lap-s3" />
+      <line x1="126" y1="24" x2="126" y2="36" /><line x1="148" y1="100" x2="152" y2="112" /><line x1="36" y1="116" x2="52" y2="116" />
+    </g>
+    <g id="lap-labels" font-family="JetBrains Mono, monospace" font-size="7.5" letter-spacing="0.45" fill="currentColor">
+      <text x="24" y="78">S1</text><text x="228" y="66">S2</text><text x="94" y="140">S3</text><text x="10" y="113">S/F</text>
+    </g>
   </defs>
 </svg>
 
@@ -83,6 +93,18 @@
         </div>
         <div class="chapter-frame">
           <img class="chapter-photo" src="assets/route/sea.jpg" width="612" height="447" alt="With school friends, in uniform" loading="lazy" />
+          <svg class="route-schematic" viewBox="0 0 260 160" role="img" aria-label="Schematic: a ship's track through several postings, ending at Goa">
+            <g fill="none" stroke="currentColor" stroke-width="1">
+              <path d="M20 128 C 50 110, 60 70, 92 76 S 140 112, 168 84 S 200 40, 226 46" stroke-dasharray="4 4" />
+              <circle cx="20" cy="128" r="3" /><circle cx="92" cy="76" r="3" /><circle cx="168" cy="84" r="3" />
+              <circle cx="226" cy="46" r="9" stroke-dasharray="2 2.5" />
+              <line x1="236" y1="132" x2="236" y2="108" /><polyline points="231,114 236,108 241,114" />
+            </g>
+            <circle cx="226" cy="46" r="3.5" fill="currentColor" />
+            <text x="236" y="102" text-anchor="middle">N</text>
+            <text x="250" y="28" text-anchor="end">GOA &middot; LONGEST STOP</text>
+            <text x="10" y="154">FIG 1 &middot; SHIP'S TRACK, NAVY POSTINGS</text>
+          </svg>
         </div>
       </article>
 
@@ -106,6 +128,19 @@
         </div>
         <div class="chapter-frame">
           <img class="chapter-photo" src="assets/route/pitch.jpg" width="640" height="480" alt="The school football team with its medals and trophy" loading="lazy" />
+          <svg class="route-schematic" viewBox="0 0 260 160" role="img" aria-label="Schematic: a football pitch above a podium. CBSE Clusters: 2nd in 2016 to 17, 1st in 2019, 3rd in 2017 to 18">
+            <g fill="none" stroke="currentColor" stroke-width="1">
+              <rect x="30" y="10" width="200" height="70" rx="1" />
+              <line x1="130" y1="10" x2="130" y2="80" /><circle cx="130" cy="45" r="13" />
+              <rect x="30" y="27" width="26" height="36" /><rect x="204" y="27" width="26" height="36" />
+              <rect x="70" y="118" width="40" height="22" /><rect x="110" y="106" width="40" height="34" stroke-width="2" /><rect x="150" y="126" width="40" height="14" />
+              <line x1="56" y1="140" x2="204" y2="140" />
+            </g>
+            <circle cx="130" cy="45" r="2" fill="currentColor" />
+            <text x="90" y="113" text-anchor="middle">2016&ndash;17</text><text x="130" y="101" text-anchor="middle">2019 &middot; CAPT</text><text x="170" y="121" text-anchor="middle">2017&ndash;18</text>
+            <text x="90" y="133" text-anchor="middle">2ND</text><text x="130" y="127" text-anchor="middle">1ST</text><text x="170" y="136" text-anchor="middle">3RD</text>
+            <text x="10" y="154">FIG 2 &middot; CBSE CLUSTERS, PLACINGS</text>
+          </svg>
         </div>
       </article>
 
@@ -123,6 +158,15 @@
         </div>
         <div class="chapter-frame">
           <img class="chapter-photo" src="assets/route/delhi.jpg" width="640" height="960" alt="Running the Freedom Run, bib 1163" loading="lazy" />
+          <svg class="route-schematic" viewBox="0 0 260 160" role="img" aria-label="Schematic: a lap circuit in three sectors, sector one lit, 2019 to 22">
+            <use href="#lap" stroke="currentColor" />
+            <use href="#lap-s1" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+            <circle cx="126" cy="30" r="3.5" fill="currentColor" />
+            <use href="#lap-labels" />
+            <text x="131" y="64" text-anchor="middle">S1 &middot; 2019&ndash;22</text>
+            <text x="131" y="78" text-anchor="middle">B.COM &middot; 180DC &middot; PUNJAB</text>
+            <text x="10" y="154">FIG 3 &middot; THE LAP IN SECTORS, S1 OF 3</text>
+          </svg>
         </div>
       </article>
 
@@ -148,6 +192,15 @@
         </div>
         <div class="chapter-frame">
           <img class="chapter-photo" src="assets/route/build.jpg" width="640" height="800" alt="Writing a delivery plan out on a whiteboard table" loading="lazy" />
+          <svg class="route-schematic" viewBox="0 0 260 160" role="img" aria-label="Schematic: a lap circuit in three sectors, sector two lit, 2022 to 25">
+            <use href="#lap" stroke="currentColor" />
+            <use href="#lap-s2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+            <circle cx="150" cy="106" r="3.5" fill="currentColor" />
+            <use href="#lap-labels" />
+            <text x="131" y="64" text-anchor="middle">S2 &middot; 2022&ndash;25</text>
+            <text x="131" y="78" text-anchor="middle">ANALYST &rsaquo; APM &rsaquo; PM</text>
+            <text x="10" y="154">FIG 4 &middot; THE LAP IN SECTORS, S2 OF 3</text>
+          </svg>
         </div>
       </article>
 
@@ -167,6 +220,16 @@
         </div>
         <div class="chapter-frame">
           <img class="chapter-photo" src="assets/route/now.jpg" width="640" height="800" alt="Speaking at a partners’ workshop, March 2026" loading="lazy" />
+          <svg class="route-schematic" viewBox="0 0 260 160" role="img" aria-label="Schematic: a lap circuit in three sectors, sector three drawn dashed, in progress since 2025">
+            <use href="#lap" stroke="currentColor" />
+            <use href="#lap-s3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="5 4" />
+            <circle cx="44" cy="116" r="7" fill="none" stroke-dasharray="2 2.5" />
+            <circle cx="110" cy="115" r="3.5" fill="currentColor" />
+            <use href="#lap-labels" />
+            <text x="131" y="64" text-anchor="middle">S3 &middot; 2025 ON</text>
+            <text x="131" y="78" text-anchor="middle">IN PROGRESS</text>
+            <text x="10" y="154">FIG 5 &middot; THE LAP IN SECTORS, S3 OF 3</text>
+          </svg>
         </div>
       </article>
 
@@ -189,6 +252,17 @@
 </main>
 
 <footer>
+  <div class="footer-cta">
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="route.html">Route</a><a href="work.html">Work</a><a href="about.html">About</a><a href="library.html">Library</a><a href="resume.html">Resume</a>
+    </nav>
+    <div class="contact-wrap">
+      <button class="contact-btn" id="footer-contact-btn" aria-expanded="false" aria-controls="footer-contact-reveal">Write to me</button>
+      <div class="contact-reveal" id="footer-contact-reveal" role="region" aria-label="Contact details">
+        <div class="contact-links"></div>
+      </div>
+    </div>
+  </div>
   <svg viewBox="0 0 96 96" aria-hidden="true"><use href="#tile" /></svg>
   <span class="footer-copy">&copy; 2026 Nihaan Mohammed</span>
   <span class="footer-hand hand">built with Claude in the loop</span>

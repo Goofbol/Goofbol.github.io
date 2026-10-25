@@ -313,6 +313,23 @@ footer {
 footer svg { width: 22px; height: 22px; color: var(--maroon); }
 body.blueprint footer svg { color: var(--text); }
 .footer-copy { font-family: var(--font-mono); font-size: 0.6rem; color: var(--text-muted); letter-spacing: 0.06em; }
+/* Second conversion moment: nav mirror + contact, above the copyright line */
+.footer-cta {
+  flex-basis: 100%; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  padding-bottom: 1.2rem; margin-bottom: 0.6rem; border-bottom: 1px dashed var(--border);
+}
+.footer-nav { display: flex; flex-wrap: wrap; gap: 0.4rem 1.3rem; padding-top: 0.55rem; }
+.footer-nav a { font-family: var(--font-sans); font-size: 0.8rem; color: var(--text-muted); letter-spacing: 0.02em; }
+.footer-nav a:hover { color: var(--maroon); }
+.footer-cta .contact-wrap { display: flex; flex-direction: column; align-items: flex-end; }
+.footer-cta .contact-reveal { margin-top: 0.8rem; padding: 1rem 1.2rem; }
+body.blueprint .footer-cta { border-bottom-color: rgba(212, 132, 42, 0.18); }
+body.blueprint .footer-nav a { color: #B0A89E; }
+body.blueprint .footer-nav a:hover { color: #D4842A; }
+@media (max-width: 760px) {
+  .footer-cta { flex-direction: column; }
+  .footer-cta .contact-wrap { align-items: flex-start; }
+}
 
 /* =============================================
    SHORTCUT OVERLAY (?)
@@ -591,6 +608,13 @@ body.blueprint .chapter-title { color: var(--text); }
 .chapter-frame .img-frame { aspect-ratio: 4 / 5; min-height: 200px; }
 .chapter-photo { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 5px; }
 body.blueprint .chapter-photo { border-color: rgba(212, 132, 42, 0.4); filter: sepia(0.25) brightness(0.88); }
+/* Blueprint-only chapter schematics, drawn in amber hairlines under the photo */
+.route-schematic { display: none; }
+body.blueprint .route-schematic {
+  display: block; width: 100%; max-width: 340px; height: auto; margin-top: 0.9rem; color: var(--amber);
+  border: 1px dashed rgba(212, 132, 42, 0.4); border-radius: 3px; background: rgba(212, 132, 42, 0.05);
+}
+.route-schematic text { font-family: var(--font-mono); font-size: 7.5px; letter-spacing: 0.06em; fill: currentColor; }
 
 .route-end { display: flex; align-items: center; gap: 1.1rem; margin-top: 1.2rem; }
 .route-end svg { width: 50px; height: 50px; color: var(--maroon); flex-shrink: 0; }
